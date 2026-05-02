@@ -73,52 +73,10 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               </NavLink>
             </div>
 
-            {/* Desktop Nav - Categorized Style */}
+            {/* Desktop Nav - 5 Main Categories */}
             <nav className="hidden lg:flex space-x-6 items-center" aria-label="Main Navigation">
               <AnimatedNavLink to="/">Home</AnimatedNavLink>
               
-              {/* Company Dropdown */}
-              <div className="relative group" onMouseEnter={() => setActiveDropdown('company')} onMouseLeave={() => setActiveDropdown(null)}>
-                <button className={`relative py-2 px-1 flex items-center text-sm font-bold transition-colors duration-300 ${activeDropdown === 'company' ? 'text-indigo-600' : 'text-slate-600 group-hover:text-indigo-600'}`}>
-                  Company
-                  <svg className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${activeDropdown === 'company' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 rounded-full transform transition-transform duration-300 ease-out origin-left ${activeDropdown === 'company' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
-                </button>
-                <div className={`absolute top-full left-1/2 transform -translate-x-1/2 pt-6 w-48 transition-all duration-300 ease-out ${activeDropdown === 'company' ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'} z-50`}>
-                  <div className="bg-white rounded-xl shadow-2xl border border-slate-100 p-4 relative before:absolute before:-top-2 before:left-1/2 before:-ml-2 before:border-l-8 before:border-r-8 before:border-b-8 before:border-l-transparent before:border-r-transparent before:border-b-white">
-                    <ul className="space-y-2">
-                        <li><NavLink to="/about" className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors">About Us</NavLink></li>
-                        <li><NavLink to="/partners" className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors">Partners</NavLink></li>
-                        <li><NavLink to="/case-studies" className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors">Case Studies</NavLink></li>
-                        <li><NavLink to="/careers" className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors">Careers</NavLink></li>
-                        <li><NavLink to="/social-media" className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors">Social Hub</NavLink></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Industries Dropdown */}
-              <div className="relative group" onMouseEnter={() => setActiveDropdown('industries')} onMouseLeave={() => setActiveDropdown(null)}>
-                <button className={`relative py-2 px-1 flex items-center text-sm font-bold transition-colors duration-300 ${activeDropdown === 'industries' ? 'text-indigo-600' : 'text-slate-600 group-hover:text-indigo-600'}`}>
-                  Industries
-                  <svg className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${activeDropdown === 'industries' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 rounded-full transform transition-transform duration-300 ease-out origin-left ${activeDropdown === 'industries' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
-                </button>
-                <div className={`absolute top-full left-1/2 transform -translate-x-1/2 pt-6 w-56 transition-all duration-300 ease-out ${activeDropdown === 'industries' ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'} z-50`}>
-                  <div className="bg-white rounded-xl shadow-2xl border border-slate-100 p-4 relative before:absolute before:-top-2 before:left-1/2 before:-ml-2 before:border-l-8 before:border-r-8 before:border-b-8 before:border-l-transparent before:border-r-transparent before:border-b-white">
-                    <ul className="space-y-1">
-                        {INDUSTRIES?.map(ind => (
-                            <li key={ind.id}>
-                                <NavLink to={`/industry/${ind.id}`} className="flex items-center px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors">
-                                    <span className="mr-2 text-base">{ind.icon}</span> {ind.title}
-                                </NavLink>
-                            </li>
-                        ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
               {/* Services Dropdown */}
               <div className="relative group" onMouseEnter={() => setActiveDropdown('services')} onMouseLeave={() => setActiveDropdown(null)}>
                 <button className={`relative py-2 px-1 flex items-center text-sm font-bold transition-colors duration-300 ${activeDropdown === 'services' ? 'text-indigo-600' : 'text-slate-600 group-hover:text-indigo-600'}`}>
@@ -146,6 +104,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         </ul>
                       </div>
                     ))}
+                    <div className="col-span-3 mt-2 pt-4 border-t border-slate-100 bg-indigo-50/50 -mx-8 -mb-8 p-4 rounded-b-2xl">
+                        <NavLink to="/services" className="flex items-center justify-center text-sm font-bold text-indigo-700 hover:text-indigo-900 group/link">
+                            Explore All Professional Services <span className="ml-1 transition-transform group-hover/link:translate-x-1">→</span>
+                        </NavLink>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -157,55 +120,105 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   <svg className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${activeDropdown === 'solutions' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                   <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 rounded-full transform transition-transform duration-300 ease-out origin-left ${activeDropdown === 'solutions' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
                 </button>
-                <div className={`absolute top-full left-1/2 transform -translate-x-1/2 pt-6 w-[600px] transition-all duration-300 ease-out ${activeDropdown === 'solutions' ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'} z-50`}>
-                  <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 p-6 grid grid-cols-2 gap-6 relative before:absolute before:-top-2 before:left-1/2 before:-ml-2 before:border-l-8 before:border-r-8 before:border-b-8 before:border-l-transparent before:border-r-transparent before:border-b-white">
-                    {SOLUTIONS.map((sol) => (
-                      <NavLink key={sol.id} to={`/solution/${sol.id}`} className="group/sol p-4 hover:bg-slate-50 rounded-xl transition-colors border border-transparent hover:border-slate-100">
-                        <div className="font-bold text-slate-800 group-hover/sol:text-indigo-600 mb-1">{sol.title}</div>
-                        <div className="text-xs text-slate-500">{sol.focus}</div>
-                      </NavLink>
-                    ))}
-                    <div className="col-span-2 mt-2 pt-4 border-t border-slate-100 bg-indigo-50/50 -mx-6 -mb-6 p-4 rounded-b-2xl">
-                        <NavLink to="/solutions" className="flex items-center justify-center text-sm font-bold text-indigo-700 hover:text-indigo-900 group/link">
-                            View All Strategies <span className="ml-1 transition-transform group-hover/link:translate-x-1">→</span>
-                        </NavLink>
+                <div className={`absolute top-full left-1/2 transform -translate-x-1/2 pt-6 w-[850px] transition-all duration-300 ease-out ${activeDropdown === 'solutions' ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'} z-50`}>
+                  <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 p-8 grid grid-cols-12 gap-8 relative before:absolute before:-top-2 before:left-1/2 before:-ml-2 before:border-l-8 before:border-r-8 before:border-b-8 before:border-l-transparent before:border-r-transparent before:border-b-white">
+                    {/* Solution Packages */}
+                    <div className="col-span-5">
+                      <h4 className="font-bold text-indigo-900 mb-4 uppercase text-[10px] tracking-widest border-b border-slate-100 pb-2">Strategic Packages</h4>
+                      <div className="space-y-3">
+                        {SOLUTIONS.slice(0, 5).map((sol) => (
+                          <NavLink key={sol.id} to={`/solution/${sol.id}`} className="block group/sol hover:bg-slate-50 p-2 rounded-lg transition-colors">
+                            <div className="text-sm font-bold text-slate-800 group-hover/sol:text-indigo-600">{sol.title}</div>
+                            <div className="text-[10px] text-slate-500">{sol.focus}</div>
+                          </NavLink>
+                        ))}
+                        <NavLink to="/solutions" className="text-xs font-bold text-indigo-600 hover:underline pl-2">View All Solutions →</NavLink>
+                      </div>
+                    </div>
+
+                    {/* Products & Industries */}
+                    <div className="col-span-4 border-l border-slate-100 pl-8">
+                       <h4 className="font-bold text-indigo-900 mb-4 uppercase text-[10px] tracking-widest border-b border-slate-100 pb-2">Software Products</h4>
+                       <div className="space-y-3 mb-6">
+                          <NavLink to="/products" className="block text-sm font-bold text-slate-800 hover:text-indigo-600">Enterprise Platforms</NavLink>
+                          <NavLink to="/problems" className="block text-sm font-bold text-slate-800 hover:text-indigo-600">Challenges We Solve</NavLink>
+                       </div>
+
+                       <h4 className="font-bold text-indigo-900 mb-4 uppercase text-[10px] tracking-widest border-b border-slate-100 pb-2">Industry Focus</h4>
+                       <div className="grid grid-cols-1 gap-2">
+                          {INDUSTRIES.slice(0, 4).map(ind => (
+                            <NavLink key={ind.id} to={`/industry/${ind.id}`} className="text-xs text-slate-600 hover:text-indigo-600 flex items-center">
+                              <span className="mr-2 opacity-70 group-hover:opacity-100">{ind.icon}</span> {ind.title}
+                            </NavLink>
+                          ))}
+                          <NavLink to="/industries" className="text-xs font-bold text-indigo-600 hover:underline mt-1">Explore All Industries →</NavLink>
+                       </div>
+                    </div>
+
+                    {/* Featured Callout */}
+                    <div className="col-span-3 bg-slate-900 rounded-xl p-5 text-white overflow-hidden relative group/hero">
+                       <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/20 rounded-full -mr-12 -mt-12 group-hover/hero:scale-110 transition-transform"></div>
+                       <h5 className="text-indigo-400 font-bold text-[10px] uppercase tracking-widest mb-2">Featured Strategy</h5>
+                       <p className="text-sm font-bold mb-3 leading-tight text-white group-hover/hero:text-indigo-200 transition-colors">E-commerce Acceleration Suite</p>
+                       <p className="text-[10px] text-slate-400 mb-4">Master global markets with our unified commerce gateway.</p>
+                       <NavLink to="/solution/ecommerce-acceleration" className="inline-block text-[10px] bg-white text-slate-900 px-3 py-1.5 rounded font-black hover:bg-indigo-400 hover:text-white transition-all uppercase tracking-tighter">Learn More</NavLink>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <AnimatedNavLink to="/pricing">Pricing</AnimatedNavLink>
-              
-              {/* Tools Dropdown */}
-              <div className="relative group" onMouseEnter={() => setActiveDropdown('tools')} onMouseLeave={() => setActiveDropdown(null)}>
-                <button className={`relative py-2 px-1 flex items-center text-sm font-bold transition-colors duration-300 ${activeDropdown === 'tools' ? 'text-indigo-600' : 'text-slate-600 group-hover:text-indigo-600'}`}>
-                  Tools
-                  <svg className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${activeDropdown === 'tools' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 rounded-full transform transition-transform duration-300 ease-out origin-left ${activeDropdown === 'tools' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+              {/* Knowledge Base Dropdown */}
+              <div className="relative group" onMouseEnter={() => setActiveDropdown('knowledge')} onMouseLeave={() => setActiveDropdown(null)}>
+                <button className={`relative py-2 px-1 flex items-center text-sm font-bold transition-colors duration-300 ${activeDropdown === 'knowledge' ? 'text-indigo-600' : 'text-slate-600 group-hover:text-indigo-600'}`}>
+                  Knowledge Base
+                  <svg className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${activeDropdown === 'knowledge' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 rounded-full transform transition-transform duration-300 ease-out origin-left ${activeDropdown === 'knowledge' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
                 </button>
-                <div className={`absolute top-full left-1/2 transform -translate-x-1/2 pt-6 w-48 transition-all duration-300 ease-out ${activeDropdown === 'tools' ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'} z-50`}>
+                <div className={`absolute top-full left-1/2 transform -translate-x-1/2 pt-6 w-64 transition-all duration-300 ease-out ${activeDropdown === 'knowledge' ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'} z-50`}>
                   <div className="bg-white rounded-xl shadow-2xl border border-slate-100 p-4 relative before:absolute before:-top-2 before:left-1/2 before:-ml-2 before:border-l-8 before:border-r-8 before:border-b-8 before:border-l-transparent before:border-r-transparent before:border-b-white">
-                    <ul className="space-y-2">
-                        <li><NavLink to="/ai-tools" className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"><span className="mr-2">✨</span> AI Suite</NavLink></li>
-                        <li><NavLink to="/seo-tools" className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"><span className="mr-2">🔍</span> SEO Tools</NavLink></li>
-                        <li><NavLink to="/system-scan" className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"><span className="mr-2">🩺</span> System Scan</NavLink></li>
-                        <li className="border-t border-slate-100 pt-2 mt-2"><NavLink to="/glossary" className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"><span className="mr-2">📖</span> Tech Glossary</NavLink></li>
+                    <ul className="space-y-1">
+                        <li><NavLink to="/blog" className="flex items-center px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"><span className="mr-3">📰</span> Latest Insights</NavLink></li>
+                        <li><NavLink to="/ai-tools" className="flex items-center px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"><span className="mr-3">✨</span> AI Suite</NavLink></li>
+                        <li><NavLink to="/seo-tools" className="flex items-center px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"><span className="mr-3">🔍</span> SEO Tools</NavLink></li>
+                        <li><NavLink to="/system-scan" className="flex items-center px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"><span className="mr-3">🩺</span> System Scan</NavLink></li>
+                        <li><NavLink to="/glossary" className="flex items-center px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors"><span className="mr-3">📖</span> Tech Glossary</NavLink></li>
                     </ul>
                   </div>
                 </div>
               </div>
               
+              {/* Company Dropdown */}
+              <div className="relative group" onMouseEnter={() => setActiveDropdown('company')} onMouseLeave={() => setActiveDropdown(null)}>
+                <button className={`relative py-2 px-1 flex items-center text-sm font-bold transition-colors duration-300 ${activeDropdown === 'company' ? 'text-indigo-600' : 'text-slate-600 group-hover:text-indigo-600'}`}>
+                  Company
+                  <svg className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${activeDropdown === 'company' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 rounded-full transform transition-transform duration-300 ease-out origin-left ${activeDropdown === 'company' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                </button>
+                <div className={`absolute top-full left-1/2 transform -translate-x-1/2 pt-6 w-48 transition-all duration-300 ease-out ${activeDropdown === 'company' ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'} z-50`}>
+                  <div className="bg-white rounded-xl shadow-2xl border border-slate-100 p-4 relative before:absolute before:-top-2 before:left-1/2 before:-ml-2 before:border-l-8 before:border-r-8 before:border-b-8 before:border-l-transparent before:border-r-transparent before:border-b-white">
+                    <ul className="space-y-1">
+                        <li><NavLink to="/about" className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors">About Us</NavLink></li>
+                        <li><NavLink to="/partners" className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors">Partners</NavLink></li>
+                        <li><NavLink to="/case-studies" className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors">Case Studies</NavLink></li>
+                        <li><NavLink to="/careers" className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors">Careers</NavLink></li>
+                        <li><NavLink to="/social-media" className="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors">Social Hub</NavLink></li>
+                        <li className="border-t border-slate-100 pt-2 mt-2"><NavLink to="/contact" className="block px-4 py-2 text-sm font-bold text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors">Contact Us</NavLink></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
               {/* Search Trigger */}
               <button 
                 onClick={() => setIsSearchOpen(true)}
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-indigo-600 transition-colors"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-indigo-600 transition-colors ml-4"
                 aria-label="Search"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
               </button>
 
               <NavLink to="/contact" className="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold py-2.5 px-6 rounded-full transition-all shadow-md hover:shadow-emerald-500/30 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-none ml-2">
-                Get Started
+                Consultation
               </NavLink>
             </nav>
 
@@ -235,25 +248,25 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         {isMenuOpen && (
           <div className="lg:hidden bg-white border-t border-slate-100 py-4 h-[calc(100vh-80px)] overflow-y-auto pb-20 animate-fade-in shadow-xl">
             <div className="container mx-auto px-4 flex flex-col space-y-2">
-              <NavLink to="/" className="text-lg font-medium py-3 border-b border-slate-50 text-slate-700 hover:text-indigo-600" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
+              <NavLink to="/" className="text-lg font-bold py-3 border-b border-slate-50 text-slate-900" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
               
               {/* Mobile Services Accordion */}
               <div className="border-b border-slate-50">
                 <button 
                   onClick={() => toggleMobileSubmenu('services')}
-                  className="w-full flex justify-between items-center py-3 text-lg font-medium text-slate-700 hover:text-indigo-600 focus:outline-none"
+                  className="w-full flex justify-between items-center py-3 text-lg font-bold text-slate-900 focus:outline-none"
                 >
                   Services
                   <svg className={`w-4 h-4 transition-transform duration-300 ${mobileSubmenu === 'services' ? 'rotate-180 text-indigo-600' : 'text-slate-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${mobileSubmenu === 'services' ? 'max-h-[1000px] opacity-100 pb-3' : 'max-h-0 opacity-0'}`}>
-                   <div className="pl-4 space-y-3 border-l-2 border-slate-100 ml-2">
-                      <NavLink to="/services" className="block text-sm font-bold text-indigo-600" onClick={() => setIsMenuOpen(false)}>All Services</NavLink>
+                   <div className="pl-4 space-y-3 border-l-2 border-indigo-100 ml-2">
+                      <NavLink to="/services" className="block text-sm font-black text-indigo-600" onClick={() => setIsMenuOpen(false)}>All Service Portfolios</NavLink>
                       {SERVICE_CATEGORIES.map(cat => (
                         <div key={cat.id}>
-                           <div className="text-xs font-bold text-slate-400 uppercase mb-1 mt-2">{cat.title}</div>
+                           <div className="text-[10px] font-black text-slate-400 uppercase mb-1 mt-2 tracking-widest">{cat.title}</div>
                            {cat.items.map(item => (
-                              <NavLink key={item.id} to={`/service/${item.id}`} className="block text-sm text-slate-600 py-1 hover:text-indigo-600" onClick={() => setIsMenuOpen(false)}>
+                              <NavLink key={item.id} to={`/service/${item.id}`} className="block text-sm text-slate-700 py-1 font-medium" onClick={() => setIsMenuOpen(false)}>
                                 {item.title}
                               </NavLink>
                            ))}
@@ -263,46 +276,86 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 </div>
               </div>
 
-              {/* Mobile Industries */}
+              {/* Mobile Solutions Accordion */}
               <div className="border-b border-slate-50">
                 <button 
-                  onClick={() => toggleMobileSubmenu('industries')}
-                  className="w-full flex justify-between items-center py-3 text-lg font-medium text-slate-700 hover:text-indigo-600 focus:outline-none"
+                  onClick={() => toggleMobileSubmenu('solutions')}
+                  className="w-full flex justify-between items-center py-3 text-lg font-bold text-slate-900 focus:outline-none"
                 >
-                  Industries
-                  <svg className={`w-4 h-4 transition-transform duration-300 ${mobileSubmenu === 'industries' ? 'rotate-180 text-indigo-600' : 'text-slate-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                  Solutions
+                  <svg className={`w-4 h-4 transition-transform duration-300 ${mobileSubmenu === 'solutions' ? 'rotate-180 text-indigo-600' : 'text-slate-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ${mobileSubmenu === 'industries' ? 'max-h-[500px] opacity-100 pb-3' : 'max-h-0 opacity-0'}`}>
-                   <div className="pl-4 space-y-2 border-l-2 border-slate-100 ml-2">
-                      <NavLink to="/industries" className="block text-sm font-bold text-indigo-600 mb-2" onClick={() => setIsMenuOpen(false)}>All Industries</NavLink>
-                      {INDUSTRIES?.map(ind => (
-                          <NavLink key={ind.id} to={`/industry/${ind.id}`} className="block text-sm text-slate-600 py-1 hover:text-indigo-600" onClick={() => setIsMenuOpen(false)}>
-                            {ind.title}
+                <div className={`overflow-hidden transition-all duration-300 ${mobileSubmenu === 'solutions' ? 'max-h-[1000px] opacity-100 pb-3' : 'max-h-0 opacity-0'}`}>
+                   <div className="pl-4 space-y-3 border-l-2 border-indigo-100 ml-2">
+                      <NavLink to="/solutions" className="block text-sm font-black text-indigo-600" onClick={() => setIsMenuOpen(false)}>Strategic Solutions</NavLink>
+                      <div className="space-y-1">
+                        {SOLUTIONS.map(sol => (
+                          <NavLink key={sol.id} to={`/solution/${sol.id}`} className="block text-sm text-slate-700 py-1" onClick={() => setIsMenuOpen(false)}>{sol.title}</NavLink>
+                        ))}
+                      </div>
+                      
+                      <div className="text-[10px] font-black text-slate-400 uppercase mb-1 mt-4 tracking-widest">Platforms & Challenges</div>
+                      <NavLink to="/products" className="block text-sm text-slate-700 py-1" onClick={() => setIsMenuOpen(false)}>Software Products</NavLink>
+                      <NavLink to="/problems" className="block text-sm text-slate-700 py-1" onClick={() => setIsMenuOpen(false)}>Success Scenarios</NavLink>
+
+                      <div className="text-[10px] font-black text-slate-400 uppercase mb-1 mt-4 tracking-widest">Industries</div>
+                      <div className="grid grid-cols-1 gap-1">
+                        {INDUSTRIES.map(ind => (
+                          <NavLink key={ind.id} to={`/industry/${ind.id}`} className="text-xs text-slate-600 py-1" onClick={() => setIsMenuOpen(false)}>
+                            {ind.icon} {ind.title}
                           </NavLink>
-                      ))}
+                        ))}
+                      </div>
                    </div>
                 </div>
               </div>
 
-              <NavLink to="/products" className="text-lg font-medium py-3 border-b border-slate-50 text-slate-700 hover:text-indigo-600" onClick={() => setIsMenuOpen(false)}>Products</NavLink>
-              <NavLink to="/pricing" className="text-lg font-medium py-3 border-b border-slate-50 text-slate-700 hover:text-indigo-600" onClick={() => setIsMenuOpen(false)}>Pricing</NavLink>
-              <NavLink to="/problems" className="text-lg font-medium py-3 border-b border-slate-50 text-slate-700 hover:text-indigo-600" onClick={() => setIsMenuOpen(false)}>Problems</NavLink>
-              <NavLink to="/blog" className="text-lg font-medium py-3 border-b border-slate-50 text-slate-700 hover:text-indigo-600" onClick={() => setIsMenuOpen(false)}>Blog</NavLink>
-              <NavLink to="/about" className="text-lg font-medium py-3 border-b border-slate-50 text-slate-700 hover:text-indigo-600" onClick={() => setIsMenuOpen(false)}>About Us</NavLink>
-              
-              <div className="pt-4 pb-2">
-                 <div className="text-xs font-bold text-slate-400 uppercase mb-2">Tools & Resources</div>
-                 <div className="grid grid-cols-2 gap-2">
-                    <NavLink to="/seo-tools" className="text-center p-3 bg-slate-50 rounded-lg text-sm font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600" onClick={() => setIsMenuOpen(false)}>SEO Tools</NavLink>
-                    <NavLink to="/ai-tools" className="text-center p-3 bg-slate-50 rounded-lg text-sm font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600" onClick={() => setIsMenuOpen(false)}>AI Tools</NavLink>
-                    <NavLink to="/system-scan" className="text-center p-3 bg-slate-50 rounded-lg text-sm font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600" onClick={() => setIsMenuOpen(false)}>System Scan</NavLink>
-                    <NavLink to="/glossary" className="text-center p-3 bg-slate-50 rounded-lg text-sm font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-600" onClick={() => setIsMenuOpen(false)}>Glossary</NavLink>
-                 </div>
+              {/* Mobile Knowledge Base */}
+              <div className="border-b border-slate-50">
+                <button 
+                  onClick={() => toggleMobileSubmenu('knowledge')}
+                  className="w-full flex justify-between items-center py-3 text-lg font-bold text-slate-900 focus:outline-none"
+                >
+                  Knowledge Base
+                  <svg className={`w-4 h-4 transition-transform duration-300 ${mobileSubmenu === 'knowledge' ? 'rotate-180 text-indigo-600' : 'text-slate-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${mobileSubmenu === 'knowledge' ? 'max-h-[500px] opacity-100 pb-3' : 'max-h-0 opacity-0'}`}>
+                   <div className="pl-4 space-y-2 border-l-2 border-indigo-100 ml-2">
+                      <NavLink to="/blog" className="block text-sm text-slate-700 py-2" onClick={() => setIsMenuOpen(false)}>📰 Latest Insights</NavLink>
+                      <NavLink to="/ai-tools" className="block text-sm text-slate-700 py-2" onClick={() => setIsMenuOpen(false)}>✨ AI Tools Suite</NavLink>
+                      <NavLink to="/seo-tools" className="block text-sm text-slate-700 py-2" onClick={() => setIsMenuOpen(false)}>🔍 SEO Toolkit</NavLink>
+                      <NavLink to="/system-scan" className="block text-sm text-slate-700 py-2" onClick={() => setIsMenuOpen(false)}>🩺 System Health</NavLink>
+                      <NavLink to="/glossary" className="block text-sm text-slate-700 py-2" onClick={() => setIsMenuOpen(false)}>📖 Tech Glossary</NavLink>
+                   </div>
+                </div>
               </div>
 
-              <NavLink to="/contact" className="bg-emerald-600 text-white text-center py-4 rounded-xl font-bold mt-4 shadow-lg active:scale-95 transition-transform" onClick={() => setIsMenuOpen(false)}>
-                Get Started
-              </NavLink>
+              {/* Mobile Company */}
+              <div className="border-b border-slate-50">
+                <button 
+                  onClick={() => toggleMobileSubmenu('company')}
+                  className="w-full flex justify-between items-center py-3 text-lg font-bold text-slate-900 focus:outline-none"
+                >
+                  Company
+                  <svg className={`w-4 h-4 transition-transform duration-300 ${mobileSubmenu === 'company' ? 'rotate-180 text-indigo-600' : 'text-slate-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${mobileSubmenu === 'company' ? 'max-h-[500px] opacity-100 pb-3' : 'max-h-0 opacity-0'}`}>
+                   <div className="pl-4 space-y-2 border-l-2 border-indigo-100 ml-2">
+                      <NavLink to="/about" className="block text-sm text-slate-700 py-2 font-medium" onClick={() => setIsMenuOpen(false)}>About Our Mission</NavLink>
+                      <NavLink to="/partners" className="block text-sm text-slate-700 py-2 font-medium" onClick={() => setIsMenuOpen(false)}>Partnership Program</NavLink>
+                      <NavLink to="/case-studies" className="block text-sm text-slate-700 py-2 font-medium" onClick={() => setIsMenuOpen(false)}>Success Stories</NavLink>
+                      <NavLink to="/careers" className="block text-sm text-slate-700 py-2 font-medium" onClick={() => setIsMenuOpen(false)}>Careers & Growth</NavLink>
+                      <NavLink to="/social-media" className="block text-sm text-slate-700 py-2 font-medium" onClick={() => setIsMenuOpen(false)}>Social Connectivity</NavLink>
+                      <NavLink to="/contact" className="block text-sm font-bold text-indigo-600 py-2" onClick={() => setIsMenuOpen(false)}>Contact Us</NavLink>
+                   </div>
+                </div>
+              </div>
+
+              <div className="pt-6">
+                <NavLink to="/contact" className="block w-full bg-indigo-600 text-white text-center py-4 rounded-xl font-bold shadow-lg active:scale-95 transition-transform" onClick={() => setIsMenuOpen(false)}>
+                    Request Consultation
+                </NavLink>
+              </div>
             </div>
           </div>
         )}

@@ -1,5 +1,5 @@
 
-import { BlogPost, ProductItem, SolutionItem, ServiceCategory, ServiceItem, IndustryItem, GlossaryItem } from '../types';
+import { BlogPost, ProductItem, SolutionItem, ServiceCategory, ServiceItem, IndustryItem, GlossaryItem, ProblemItem } from '../types';
 import { PRODUCTS, SOLUTIONS, SERVICE_CATEGORIES, PROBLEMS, INDUSTRIES, GLOSSARY } from '../constants';
 import { getPosts as getBlogPosts, createPost as createBlogPost, updatePost as updateBlogPost, deletePost as deleteBlogPost, syncBlogPosts } from './blogService';
 
@@ -21,7 +21,12 @@ const syncData = <T extends { id?: string, term?: string }>(key: string, constan
 
         constants.forEach(constItem => {
             const itemId = constItem.id || constItem.term;
-            if (!storedIds.has(itemId)) {
+            const existingIndex = stored.findIndex(s => (s.id || s.term) === itemId);
+            if (existingIndex >= 0) {
+                // Update existing item to ensure we got the latest from constants.ts
+                stored[existingIndex] = constItem;
+                hasChanges = true;
+            } else {
                 stored.push(constItem);
                 hasChanges = true;
             }
@@ -211,6 +216,19 @@ export const saveService = (item: StoredServiceItem) => {
 export const deleteService = (id: string) => {
     const items = getRawServices().filter(i => i.id !== id);
     saveItems(SERVICES_KEY, items);
+};
+
+// --- PROBLEMS ---
+export const getProblems = (): ProblemItem[] => getItems<ProblemItem>(PROBLEMS_KEY);
+export const saveProblem = (item: ProblemItem) => {
+    const items = getProblems();
+    const index = items.findIndex(i => i.id === item.id);
+    if (index >= 0) items[index] = item; else items.push(item);
+    saveItems(PROBLEMS_KEY, items);
+};
+export const deleteProblem = (id: string) => {
+    const items = getProblems().filter(i => i.id !== id);
+    saveItems(PROBLEMS_KEY, items);
 };
 
 export const restoreDefaults = () => {

@@ -199,15 +199,74 @@ const SolutionDetail: React.FC = () => {
                 ))}
               </div>
 
-              <h2 className="text-2xl font-bold text-slate-900 mb-6">Strategic Benefits</h2>
-              <ul className="space-y-4 mb-8">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6 font-serif tracking-tight">Strategic Advantage</h2>
+              <div className="grid md:grid-cols-2 gap-4 mb-12">
                 {solution.benefits?.map((benefit, idx) => (
-                  <li key={idx} className="flex items-start">
-                    <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span className="text-slate-600">{benefit}</span>
-                  </li>
+                   <div key={idx} className="flex items-start p-4 bg-indigo-50/50 rounded-2xl border border-indigo-100 hover:bg-white hover:border-indigo-500 transition-all cursor-default">
+                    <span className="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center mr-3 flex-shrink-0 text-[10px] font-bold shadow-sm">✓</span>
+                    <span className="text-slate-700 text-sm font-medium leading-normal">{benefit}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
+
+              {/* Use Cases */}
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">Practical Use Cases</h2>
+              <div className="space-y-4 mb-12">
+                {solution.useCases?.map((useCase, idx) => (
+                  <div key={idx} className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-slate-50 rounded-full -mr-12 -mt-12 group-hover:bg-indigo-50 transition-colors"></div>
+                    <h4 className="font-bold text-slate-900 mb-2 relative z-10 text-lg border-b border-indigo-100 pb-2 inline-block">{useCase.title}</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed relative z-10 italic">"{useCase.description}"</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Pricing if available */}
+              {solution.pricing && (
+                <div className="mb-12">
+                  <h2 className="text-2xl font-bold text-slate-900 mb-6">Investment Blueprint</h2>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {solution.pricing.map((plan, idx) => (
+                      <div key={idx} className="bg-slate-900 text-white p-6 rounded-3xl border border-slate-700 relative overflow-hidden group">
+                        <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-indigo-500/20 rounded-full group-hover:scale-150 transition-transform"></div>
+                        <h4 className="font-bold text-indigo-400 mb-1">{plan.title}</h4>
+                        <div className="text-3xl font-black mb-4 flex items-baseline gap-1">
+                          {plan.price}
+                          {plan.price.includes('/') && <span className="text-xs text-slate-500 font-normal">/ project</span>}
+                        </div>
+                        <div className="space-y-2 mb-6">
+                           {plan.features.map((f, i) => (
+                             <div key={i} className="flex items-center gap-2 text-xs text-slate-300">
+                               <div className="w-1 h-1 bg-indigo-400 rounded-full"></div> {f}
+                             </div>
+                           ))}
+                        </div>
+                        <button onClick={handleDemoRequest} className="w-full py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition-all shadow-lg shadow-indigo-600/20">Configure Plan</button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Deployment Path */}
+              {solution.roadmap && (
+                <div className="mb-12">
+                  <h2 className="text-2xl font-bold text-slate-900 mb-6">Deployment Path</h2>
+                  <div className="grid grid-cols-1 gap-4">
+                    {solution.roadmap.map((step, idx) => (
+                      <div key={idx} className="flex gap-4 items-center bg-white p-5 rounded-2xl border border-slate-100 shadow-sm border-l-4 border-l-indigo-600">
+                        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center font-black text-indigo-600 text-xl border border-slate-100">
+                          {step.step}
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-slate-900 text-sm leading-none mb-1">{step.title}</h4>
+                          <p className="text-slate-500 text-xs leading-relaxed">{step.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <h2 ref={faqRef} className="text-2xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
               {groupedFaqs && Object.entries(groupedFaqs).map(([category, faqs]: [string, FaqItem[]]) => (

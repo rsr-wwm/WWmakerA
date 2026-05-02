@@ -12,6 +12,9 @@ export interface ServiceItem {
   fullDescription: string; // SEO-rich long description
   features: { title: string; description: string; benefit: string }[];
   benefits: string[]; // Value propositions
+  useCases?: { title: string; description: string }[];
+  pricing?: { title: string; price: string; features: string[] }[];
+  roadmap?: { step: string; title: string; description: string }[];
   faqs: FaqItem[]; // For FAQ schema
   metaTitle: string; // SEO Title
   metaDescription: string; // SEO Meta Description
@@ -33,6 +36,9 @@ export interface SolutionItem {
   fullDescription: string; // SEO-rich long description
   features: { title: string; benefit: string }[]; // Changed to object with benefit
   benefits: string[]; // Value propositions
+  useCases?: { title: string; description: string }[];
+  pricing?: { title: string; price: string; features: string[] }[];
+  roadmap?: { step: string; title: string; description: string }[];
   faqs: FaqItem[]; // For FAQ schema
   metaTitle: string; // SEO Title
   metaDescription: string; // SEO Meta Description
@@ -46,8 +52,11 @@ export interface ProductItem {
   fullDescription: string;
   features: { title: string; description: string; benefit: string }[]; // Added benefit
   benefits: string[]; // Value propositions for product pages
-  pricingModel: string; // e.g., "Subscription", "Pay-as-you-go"
-  targetAudience: string;
+  useCases?: { title: string; description: string }[];
+  pricing?: { title: string; price: string; features: string[] }[];
+  roadmap?: { step: string; title: string; description: string }[];
+  pricingModel?: string; // e.g., "Subscription", "Pay-as-you-go"
+  targetAudience?: string;
   faqs: FaqItem[];
   metaTitle: string;
   metaDescription: string;
@@ -62,6 +71,9 @@ export interface ProblemItem {
   symptoms: string[]; // List of specific pain points/issues
   ourSolution: string; // Detailed explanation of the fix
   relatedServices: string[]; // IDs of services that solve this
+  useCases?: { title: string; description: string }[];
+  pricing?: { title: string; price: string; features: string[] }[]; // Added
+  roadmap?: { step: string; title: string; description: string }[];
   faqs: FaqItem[];
   metaTitle: string;
   metaDescription: string;
@@ -75,7 +87,11 @@ export interface IndustryItem {
   icon: string;
   challenges: { title: string; description: string }[];
   solutions: string[]; // IDs of related solutions/services
+  useCases?: { title: string; description: string }[];
+  pricing?: { title: string; price: string; features: string[] }[]; // Added
+  roadmap?: { step: string; title: string; description: string }[]; // Added
   stats: { value: string; label: string }[];
+  faqs: FaqItem[]; // Added
   metaTitle: string;
   metaDescription: string;
 }

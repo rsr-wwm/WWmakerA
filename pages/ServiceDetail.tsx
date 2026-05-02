@@ -233,7 +233,7 @@ const ServiceDetail: React.FC = () => {
               </div>
 
               <h2 className="text-2xl font-bold text-slate-900 mb-6">Benefits</h2>
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-4 mb-12">
                 {service.benefits?.map((benefit, idx) => (
                   <li key={idx} className="flex items-start">
                     <span className="w-5 h-5 bg-green-100 text-green-600 rounded-full flex items-center justify-center mr-3 flex-shrink-0 text-xs font-bold mt-0.5">✓</span>
@@ -242,38 +242,50 @@ const ServiceDetail: React.FC = () => {
                 ))}
               </ul>
 
+              {/* Use Cases */}
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">Real-World Use Cases</h2>
+              <div className="grid md:grid-cols-2 gap-6 mb-12">
+                {service.useCases?.map((useCase, idx) => (
+                  <div key={idx} className="bg-indigo-50 p-6 rounded-xl border border-indigo-100 italic">
+                    <h4 className="font-bold text-indigo-900 mb-2">{useCase.title}</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">{useCase.description}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Pricing */}
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">Pricing Plans</h2>
+              <div className="grid md:grid-cols-3 gap-4 mb-12">
+                {service.pricing?.map((plan, idx) => (
+                  <div key={idx} className="bg-white border border-slate-200 p-6 rounded-xl shadow-sm hover:border-indigo-500 transition-colors">
+                    <h4 className="font-bold text-lg text-slate-900 mb-1">{plan.title}</h4>
+                    <div className="text-2xl font-extrabold text-indigo-600 mb-4">{plan.price}</div>
+                    <ul className="text-xs text-slate-500 space-y-2">
+                       {plan.features.map((f, i) => (
+                         <li key={i} className="flex items-center gap-1">
+                           <span className="text-green-500">✓</span> {f}
+                         </li>
+                       ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+
               {/* Implementation Process */}
               <h2 className="text-2xl font-bold text-slate-900 mb-6">Implementation Roadmap</h2>
               <div className="space-y-6 mb-12">
-                <div className="flex gap-4">
-                  <div className="flex flex-col items-center">
-                    <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-sm shadow-md">1</div>
-                    <div className="w-0.5 h-full bg-slate-200 my-2"></div>
+                {service.roadmap?.map((step, idx) => (
+                  <div key={idx} className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-sm shadow-md whitespace-nowrap">{step.step}</div>
+                      {idx !== service.roadmap.length - 1 && <div className="w-0.5 h-full bg-slate-200 my-2"></div>}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900">{step.title}</h4>
+                      <p className="text-slate-600 text-sm">{step.description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900">Consultation & Requirements</h4>
-                    <p className="text-slate-600 text-sm">We analyze your specific needs for {service.title} and define KPIs.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="flex flex-col items-center">
-                    <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-sm shadow-md">2</div>
-                    <div className="w-0.5 h-full bg-slate-200 my-2"></div>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900">Setup & Integration</h4>
-                    <p className="text-slate-600 text-sm">Our team configures the infrastructure and integrates APIs with your existing systems.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="flex flex-col items-center">
-                    <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-sm shadow-md">3</div>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900">Testing & Launch</h4>
-                    <p className="text-slate-600 text-sm">Rigorous testing ensures reliability before we go live with your new solution.</p>
-                  </div>
-                </div>
+                ))}
               </div>
 
               <h2 ref={faqRef} className="text-2xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>

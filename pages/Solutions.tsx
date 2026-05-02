@@ -1,19 +1,22 @@
 
 import React, { useEffect, useRef, useState } from 'react';
-import { getSolutions } from '../services/contentService';
-import { SolutionItem } from '../types';
+import { getSolutions, getIndustries, getProblems } from '../services/contentService';
+import { SolutionItem, IndustryItem, ProblemItem } from '../types';
 import { NavLink } from 'react-router-dom';
 import { SocialShare } from '../components/SocialShare';
 import { SEO } from '../components/SEO';
 
 const Solutions: React.FC = () => {
   const [solutions, setSolutions] = useState<SolutionItem[]>([]);
+  const [industries, setIndustries] = useState<IndustryItem[]>([]);
+  const [problems, setProblems] = useState<ProblemItem[]>([]);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
     // Load data
-    const data = getSolutions();
-    setSolutions(data);
+    setSolutions(getSolutions());
+    setIndustries(getIndustries());
+    setProblems(getProblems());
   }, []);
 
   useEffect(() => {
@@ -96,78 +99,88 @@ const Solutions: React.FC = () => {
       <div className="bg-slate-900 text-white py-20 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className="text-4xl font-bold mb-4">Problems We Solve</h1>
+          <h1 className="text-4xl font-bold mb-4">Strategic Business Solutions</h1>
           <p className="text-slate-400 max-w-2xl mx-auto mb-8">
-            We don't just sell services; we provide packaged solutions designed to solve specific business problems and drive measurable outcomes.
+            Tailored strategies for specific industries, fixing critical business problems, and driving measurable outcomes.
           </p>
           
-          {/* Solution Categories */}
-          <div className="flex flex-wrap justify-center gap-3">
-            {Array.from(new Set(solutions.map(s => s.focus))).map((focus) => (
-              <button 
-                key={focus}
-                onClick={() => {
-                  // Simple scroll to first item with this focus
-                  const firstMatch = solutions.find(s => s.focus === focus);
-                  if (firstMatch) {
-                    const element = document.getElementById(`solution-${firstMatch.id}`);
-                    element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
-                }}
-                className="px-4 py-1.5 bg-white/10 border border-white/20 rounded-full text-white text-xs font-bold uppercase tracking-wider hover:bg-white hover:text-slate-900 transition-all"
-              >
-                {focus}
-              </button>
-            ))}
+          <div className="flex flex-wrap justify-center gap-4">
+             <a href="#industries" className="px-6 py-2 bg-white text-slate-900 rounded-xl font-bold text-sm shadow-lg">Target Industries</a>
+             <a href="#solutions" className="px-6 py-2 bg-indigo-600 text-white rounded-xl font-bold text-sm hover:bg-indigo-500 transition-colors">Our Strategies</a>
+             <a href="#problems" className="px-6 py-2 bg-slate-800 text-white border border-slate-700 rounded-xl font-bold text-sm hover:bg-slate-700 transition-colors">Pain Points We Fix</a>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-20">
-        <div className="grid lg:grid-cols-2 gap-12">
-          {solutions.map((solution, idx) => (
-            <div key={idx} id={`solution-${solution.id}`} className="solution-card flex flex-col md:flex-row gap-6 bg-slate-50 rounded-2xl p-8 border border-slate-100 transition-all hover:shadow-xl hover:border-indigo-100 group scroll-mt-24">
-              <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                   {getSolutionIcon(solution.id)}
-                </div>
-              </div>
-              <div className="flex-grow">
-                <h3 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-indigo-700 transition-colors">{solution.title}</h3>
-                <div className="mb-4">
-                  <span className="inline-block bg-white border border-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wide shadow-sm">
-                    Focus: {solution.focus}
-                  </span>
-                </div>
-                <p className="text-slate-600 mb-6 font-medium bg-white/50 p-3 rounded-lg border border-slate-100/50">Outcome: {solution.outcome}</p>
-                
-                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Solution Components:</h4>
-                <ul className="space-y-3 mb-6">
-                  {solution.features.map((feat, fIdx) => (
-                    <li key={fIdx} className="relative flex items-center text-slate-600 text-sm group/item cursor-help w-fit">
-                      <svg className="w-4 h-4 text-emerald-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                      <span className="border-b border-dotted border-slate-300 hover:border-indigo-500 transition-colors">{feat.title}</span>
-                      
-                      {/* Tooltip */}
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[250px] bg-slate-900 text-white text-xs p-3 rounded-lg shadow-xl opacity-0 invisible group-hover/item:opacity-100 group-hover/item:visible transition-all duration-200 z-20 pointer-events-none transform translate-y-2 group-hover/item:translate-y-0 text-center leading-relaxed border border-slate-700">
-                        <span className="font-bold block mb-1 text-emerald-400">Benefit:</span>
-                        {feat.benefit}
-                        {/* Arrow */}
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-[1px] border-4 border-transparent border-t-slate-900"></div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-                <NavLink 
-                  to={`/solution/${solution.id}`}
-                  className="inline-flex items-center text-indigo-600 font-bold text-sm hover:text-indigo-800 transition-colors"
-                >
-                  View Strategy Strategy <span className="ml-1">→</span>
-                </NavLink>
-              </div>
+      <div className="container mx-auto px-4 py-16 space-y-24">
+        {/* Industries Section */}
+        <section id="industries" className="scroll-mt-24">
+            <h2 className="text-3xl font-bold text-slate-900 mb-8 border-b pb-4">Industries We Empower</h2>
+            <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4">
+                {industries.map((ind) => (
+                    <NavLink key={ind.id} to={`/industry/${ind.id}`} className="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-indigo-500 hover:shadow-lg transition-all text-center group">
+                        <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{ind.icon}</div>
+                        <h3 className="font-bold text-slate-900 text-sm whitespace-nowrap">{ind.title}</h3>
+                    </NavLink>
+                ))}
             </div>
-          ))}
-        </div>
+        </section>
+
+        {/* Solutions Section */}
+        <section id="solutions" className="scroll-mt-24 pt-16 border-t border-slate-100">
+            <h2 className="text-3xl font-bold text-slate-900 mb-12">Strategic Outcomes</h2>
+            <div className="grid lg:grid-cols-2 gap-12">
+              {solutions.map((solution, idx) => (
+                <div key={idx} id={`solution-${solution.id}`} className="solution-card flex flex-col md:flex-row gap-6 bg-slate-50 rounded-2xl p-8 border border-slate-100 transition-all hover:shadow-xl hover:border-indigo-100 group scroll-mt-24">
+                  <div className="flex-shrink-0">
+                    <div className="w-16 h-16 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                       {getSolutionIcon(solution.id)}
+                    </div>
+                  </div>
+                  <div className="flex-grow">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-indigo-700 transition-colors">{solution.title}</h3>
+                    <div className="mb-4">
+                      <span className="inline-block bg-white border border-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wide shadow-sm">
+                        Focus: {solution.focus}
+                      </span>
+                    </div>
+                    <p className="text-slate-600 mb-6 font-medium bg-white/50 p-3 rounded-lg border border-slate-100/50">Outcome: {solution.outcome}</p>
+                    
+                    <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Key Benefits:</h4>
+                    <ul className="space-y-2 mb-6">
+                      {solution.benefits.slice(0, 3).map((benefit, bIdx) => (
+                        <li key={bIdx} className="flex items-center text-slate-600 text-sm">
+                          <span className="text-emerald-500 mr-2">✓</span>
+                          {benefit}
+                        </li>
+                      ))}
+                    </ul>
+                    <NavLink 
+                      to={`/solution/${solution.id}`}
+                      className="inline-flex items-center text-indigo-600 font-bold text-sm hover:text-indigo-800 transition-colors"
+                    >
+                      View Full Strategy <span className="ml-1">→</span>
+                    </NavLink>
+                  </div>
+                </div>
+              ))}
+            </div>
+        </section>
+
+        {/* Problems Section */}
+        <section id="problems" className="scroll-mt-24 pt-16 border-t border-slate-100">
+             <h2 className="text-3xl font-bold text-slate-900 mb-12">Critical Business Problems We Resolve</h2>
+             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {problems.map((prob) => (
+                    <div key={prob.id} className="bg-white p-8 rounded-2xl border border-slate-200 hover:shadow-xl transition-all">
+                        <div className="w-10 h-10 bg-red-50 text-red-600 rounded-lg flex items-center justify-center text-xl mb-6">⚠️</div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-3">{prob.title}</h3>
+                        <p className="text-slate-500 text-sm mb-6 line-clamp-3">{prob.shortDescription}</p>
+                        <NavLink to={`/problem/${prob.id}`} className="text-red-600 text-xs font-bold uppercase tracking-wider hover:underline">Fix This Issue →</NavLink>
+                    </div>
+                ))}
+             </div>
+        </section>
       </div>
 
       {/* Success Metrics / ROI */}

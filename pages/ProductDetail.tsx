@@ -238,18 +238,78 @@ const ProductDetail: React.FC = () => {
                 </div>
             </div>
 
-            <div className="bg-indigo-50 rounded-2xl p-8 mb-12 border border-indigo-100">
-                <h2 className="text-2xl font-bold text-indigo-900 mb-6">Why Choose {product.title}?</h2>
-                <ul className="space-y-4">
+            <div className="bg-indigo-50 rounded-2xl p-8 mb-12 border border-indigo-100 italic shadow-sm relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-4 opacity-10">
+                    <svg className="w-24 h-24" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 14.691 16.708 12 20.017 12L20.017 12L20.017 21L14.017 21ZM4.017 21L4.017 18C4.017 14.691 6.708 12 10.017 12L10.017 12L10.017 21L4.017 21Z"/></svg>
+                </div>
+                <h2 className="text-2xl font-bold text-indigo-900 mb-6 relative z-10 font-serif lowercase italic tracking-tight">Our Promise: Why We Excel</h2>
+                <ul className="space-y-4 relative z-10">
                     {product.benefits?.map((benefit, idx) => (
                     <li key={idx} className="flex items-start">
                         <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-0.5 shadow-sm">
                             <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
                         </div>
-                        <span className="text-slate-700 font-medium text-lg">{benefit}</span>
+                        <span className="text-slate-700 font-medium text-lg leading-snug">{benefit}</span>
                     </li>
                     ))}
                 </ul>
+            </div>
+
+            {/* Use Cases */}
+            <div className="mb-12">
+                <h2 className="text-2xl font-bold text-slate-900 mb-6">Real-World Use Cases</h2>
+                <div className="grid md:grid-cols-2 gap-6">
+                    {product.useCases?.map((useCase, idx) => (
+                    <div key={idx} className="bg-white p-6 rounded-xl border border-slate-200 hover:border-slate-300 transition-all shadow-sm">
+                        <h4 className="font-bold text-slate-900 mb-2 border-l-4 border-indigo-500 pl-3">{useCase.title}</h4>
+                        <p className="text-slate-600 text-sm leading-relaxed">{useCase.description}</p>
+                    </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Pricing Plan */}
+            <div className="mb-12">
+                <h2 className="text-2xl font-bold text-slate-900 mb-6">Pricing Plans</h2>
+                <div className="grid md:grid-cols-3 gap-6">
+                    {product.pricing?.map((plan, idx) => (
+                    <div key={idx} className="flex flex-col h-full bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-xl transition-all group overflow-hidden relative">
+                        <div className="absolute top-0 right-0 w-16 h-16 bg-indigo-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150"></div>
+                        <h4 className="font-bold text-lg text-slate-900 mb-1 z-10">{plan.title}</h4>
+                        <div className="text-2xl font-black text-indigo-600 mb-6 z-10">{plan.price}</div>
+                        <ul className="text-xs text-slate-500 space-y-3 mb-8 flex-grow">
+                            {plan.features.map((f, i) => (
+                            <li key={i} className="flex items-center gap-2">
+                                <span className="text-indigo-500 font-bold">+</span> {f}
+                            </li>
+                            ))}
+                        </ul>
+                        <button onClick={handleDemoRequest} className="w-full py-2 bg-slate-900 text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition-colors">Select Plan</button>
+                    </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Implementation Lifecycle */}
+            <div className="mb-12">
+                <h2 className="text-2xl font-bold text-slate-900 mb-6">Implementation Roadmap</h2>
+                <div className="relative">
+                    <div className="absolute left-4 top-0 bottom-0 w-px bg-slate-200 hidden md:block"></div>
+                    <div className="space-y-8">
+                        {product.roadmap?.map((step, idx) => (
+                        <div key={idx} className="relative pl-0 md:pl-12">
+                            <div className="hidden md:flex absolute left-0 top-0 w-8 h-8 rounded-full bg-indigo-600 text-white items-center justify-center font-bold text-xs ring-4 ring-white z-10 shadow-lg">
+                                {step.step}
+                            </div>
+                            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:bg-white hover:shadow-md transition-all">
+                                <span className="inline-block px-2 py-0.5 bg-indigo-100 text-indigo-700 rounded text-[10px] font-bold uppercase tracking-wider mb-2">Step {step.step}</span>
+                                <h4 className="font-bold text-slate-900 mb-1">{step.title}</h4>
+                                <p className="text-slate-600 text-sm leading-relaxed">{step.description}</p>
+                            </div>
+                        </div>
+                        ))}
+                    </div>
+                </div>
             </div>
 
             <div className="mb-8">

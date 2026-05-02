@@ -1,18 +1,20 @@
 
 import React, { useEffect, useRef, useState } from 'react';
-import { getServiceCategories } from '../services/contentService';
-import { ServiceCategory } from '../types';
+import { getServiceCategories, getProducts } from '../services/contentService';
+import { ServiceCategory, ProductItem } from '../types';
 import { NavLink } from 'react-router-dom';
 import { SocialShare } from '../components/SocialShare';
 import { SEO } from '../components/SEO';
 
 const Services: React.FC = () => {
   const [categories, setCategories] = useState<ServiceCategory[]>([]);
+  const [products, setProducts] = useState<ProductItem[]>([]);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
     // Load data from service
     setCategories(getServiceCategories());
+    setProducts(getProducts());
   }, []);
 
   useEffect(() => {
@@ -82,62 +84,81 @@ const Services: React.FC = () => {
       {/* Header */}
       <div className="bg-white shadow-sm py-16">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-slate-900 mb-4">Our Services</h1>
-          <p className="text-slate-600 max-w-3xl mb-8">
-            A complete suite of digital tools designed to build, manage, and scale your business presence and operations.
+          <h1 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">Our Platforms & Products</h1>
+          <p className="text-slate-600 max-w-3xl mb-8 text-lg">
+            A complete ecosystem of software, message gateways, and AI-driven platforms designed to power your business growth.
           </p>
           
-          {/* Category Navigation */}
-          <div className="flex flex-wrap gap-3">
-            {categories.map((cat) => (
-              <a 
-                key={cat.id} 
-                href={`#${cat.id}`}
-                className="px-5 py-2 bg-slate-50 border border-slate-200 rounded-full text-slate-600 text-sm font-semibold hover:bg-indigo-600 hover:text-white hover:border-transparent transition-all shadow-sm"
-              >
-                {cat.title}
-              </a>
-            ))}
+          {/* Section Jump Links */}
+          <div className="flex flex-wrap gap-4">
+             <a href="#services" className="px-6 py-2 bg-indigo-600 text-white rounded-xl font-bold text-sm shadow-lg shadow-indigo-200">Our Services</a>
+             <a href="#products" className="px-6 py-2 bg-white text-indigo-600 border border-indigo-100 rounded-xl font-bold text-sm hover:bg-slate-50 transition-colors">Digital Products</a>
           </div>
         </div>
       </div>
 
       <div className="container mx-auto px-4 mt-12 space-y-16">
-        {categories.map((category) => (
-          <div key={category.id} id={category.id} className="scroll-mt-24">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="h-px bg-slate-300 flex-grow"></div>
-              <h2 className={`text-3xl font-bold ${getAccentColor(category.id).replace('text', 'text')}`}>{category.title}</h2>
-              <div className="h-px bg-slate-300 flex-grow"></div>
+        <section id="services" className="scroll-mt-24">
+            <div className="mb-12 border-b border-slate-200 pb-4">
+                <h2 className="text-3xl font-black text-slate-900">Service Ecosystem</h2>
+                <p className="text-slate-500">Professional services tailored to your digital needs.</p>
             </div>
-            <p className="text-center text-slate-600 mb-8 max-w-2xl mx-auto">{category.description}</p>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {category.items.map((service, idx) => (
-                <div key={idx} className={`service-card bg-white rounded-xl overflow-hidden shadow-sm border hover:shadow-md transition-all flex flex-col ${getCategoryColor(category.id)}`}>
-                  <div className="p-6 flex-grow">
-                    <h3 className={`text-xl font-bold mb-3 ${getAccentColor(category.id)}`}>{service.title}</h3>
-                    <p className="text-slate-600 text-sm mb-4 min-h-[40px] line-clamp-3">{service.description}</p>
-                    <div className="space-y-2 mb-4">
-                      {service.features.slice(0, 3).map((feature, fIdx) => (
-                        <div key={fIdx} className="flex items-start text-sm text-slate-500">
-                          <span className={`${getAccentColor(category.id)} mr-2 opacity-70`}>•</span>
-                          {feature.title}
+            {categories.map((category) => (
+              <div key={category.id} id={category.id} className="scroll-mt-24 mb-16 last:mb-0">
+                <h3 className={`text-xl font-bold mb-4 uppercase tracking-widest flex items-center gap-3 ${getAccentColor(category.id)}`}>
+                    <span className="w-8 h-px bg-current opacity-30"></span>
+                    {category.title}
+                </h3>
+                
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {category.items.map((service, idx) => (
+                    <div key={idx} className={`service-card bg-white rounded-2xl overflow-hidden shadow-sm border hover:shadow-xl transition-all flex flex-col group ${getCategoryColor(category.id)}`}>
+                      <div className="p-6 flex-grow">
+                        <h4 className={`text-xl font-bold mb-3 ${getAccentColor(category.id)} group-hover:underline`}>{service.title}</h4>
+                        <p className="text-slate-600 text-sm mb-6 min-h-[40px] line-clamp-3">{service.description}</p>
+                        <div className="space-y-2 mb-4 bg-slate-50/50 p-4 rounded-xl">
+                          {service.features.slice(0, 3).map((feature, fIdx) => (
+                            <div key={fIdx} className="flex items-start text-xs text-slate-500 font-medium">
+                              <span className={`${getAccentColor(category.id)} mr-2 font-black`}>✓</span>
+                              {feature.title}
+                            </div>
+                          ))}
                         </div>
-                      ))}
+                      </div>
+                      <div className="px-6 py-4 bg-white border-t border-slate-50 mt-auto">
+                        <NavLink to={`/service/${service.id}`} className={`text-xs font-bold uppercase tracking-wider flex items-center justify-between group-hover:gap-2 transition-all ${getAccentColor(category.id)}`}>
+                          Explore Details
+                          <span>→</span>
+                        </NavLink>
+                      </div>
                     </div>
-                  </div>
-                  <div className="px-6 py-4 bg-slate-50 border-t border-slate-100 mt-auto">
-                    <NavLink to={`/service/${service.id}`} className={`text-sm font-semibold hover:opacity-80 flex items-center justify-between group ${getAccentColor(category.id)}`}>
-                      Learn More
-                      <span className="transform group-hover:translate-x-1 transition-transform">→</span>
-                    </NavLink>
-                  </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+            ))}
+        </section>
+
+        {/* Products Section */}
+        <section id="products" className="scroll-mt-24 pt-16 border-t border-slate-200">
+             <div className="mb-12">
+                <h2 className="text-3xl font-black text-slate-900 mb-2">Internal Software Suite</h2>
+                <p className="text-slate-500">Proprietary products built by WebWorldMaker for scale.</p>
             </div>
-          </div>
-        ))}
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {products.map((product) => (
+                    <div key={product.id} className="service-card bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-indigo-400 transition-all flex flex-col">
+                        <div className="text-3xl mb-4">
+                            {product.id.includes('voice') ? '🎙️' : product.id.includes('stock') ? '📦' : '🛡️'}
+                        </div>
+                        <h3 className="text-lg font-bold text-slate-900 mb-2">{product.title}</h3>
+                        <p className="text-slate-500 text-xs mb-6 line-clamp-2">{product.tagline}</p>
+                        <NavLink to={`/product/${product.id}`} className="mt-auto text-indigo-600 text-xs font-bold hover:underline">Launch Product →</NavLink>
+                    </div>
+                ))}
+            </div>
+        </section>
       </div>
 
       {/* Tech Stack Section (New) */}
