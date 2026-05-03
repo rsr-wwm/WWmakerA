@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { FaqAccordion } from '../components/FaqAccordion';
+import { COUNTRY_CODES } from '../constants';
 
 const Contact: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -11,6 +12,8 @@ const Contact: React.FC = () => {
     firstName: '',
     lastName: '',
     email: '',
+    countryCode: '+91',
+    phone: '',
     serviceInterest: 'Bulk SMS / Messaging',
     message: ''
   });
@@ -34,7 +37,7 @@ const Contact: React.FC = () => {
   const contactFaqs = [
     { question: "What is your typical response time?", answer: "We aim to respond to all inquiries within 24 hours during business days. For urgent support, please use our dedicated support line available to premium clients." },
     { question: "Do you offer custom SLAs?", answer: "Yes, for enterprise clients we offer tailored Service Level Agreements including 24/7 support availability, dedicated account managers, and guaranteed uptime." },
-    { question: "Where are your offices located?", answer: "Our headquarters are in Innovation City, but we operate as a remote-first company with teams globally distributed to support all time zones." },
+    { question: "Where are your offices located?", answer: "Our headquarters are in Chandigarh, Punjab, India, but we operate as a remote-first company with teams globally distributed to support all time zones." },
     { question: "Do you work with startups?", answer: "Absolutely. We have specific packages designed to help startups scale their infrastructure cost-effectively without compromising on quality." }
   ];
 
@@ -51,6 +54,8 @@ const Contact: React.FC = () => {
       firstName: fname || prev.firstName,
       lastName: lname || prev.lastName,
       email: emailParam || prev.email,
+      phone: searchParams.get('phone') || prev.phone,
+      countryCode: searchParams.get('countryCode') || prev.countryCode,
       serviceInterest: service || prev.serviceInterest,
       message: msgParam || prev.message
     }));
@@ -80,6 +85,8 @@ const Contact: React.FC = () => {
       firstName: '',
       lastName: '',
       email: '',
+      countryCode: '+91',
+      phone: '',
       serviceInterest: 'Bulk SMS / Messaging',
       message: ''
     });
@@ -155,7 +162,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-slate-900">Office</h4>
-                    <p className="text-slate-600 text-sm mt-1">123 Digital Valley, Tech District<br />Innovation City, IC 54321</p>
+                    <p className="text-slate-600 text-sm mt-1">Chandigarh, Punjab, India</p>
                   </div>
                 </div>
 
@@ -165,7 +172,17 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-slate-900">Email</h4>
-                    <p className="text-slate-600 text-sm mt-1">sales@webworldmaker.com<br />support@webworldmaker.com</p>
+                    <p className="text-slate-600 text-sm mt-1">webworldmakes@gmail.com</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start group">
+                  <div className="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0 mr-4 transition-all duration-300 group-hover:bg-indigo-600 group-hover:text-white group-hover:shadow-lg hover:scale-110">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-slate-900">Phone</h4>
+                    <p className="text-slate-600 text-sm mt-1">+91-86002-80002</p>
                   </div>
                 </div>
 
@@ -242,6 +259,32 @@ const Contact: React.FC = () => {
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-shadow" 
                   />
+                </div>
+
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-1">Mobile Number</label>
+                  <div className="flex gap-2">
+                    <select
+                      name="countryCode"
+                      value={formData.countryCode}
+                      onChange={handleChange}
+                      className="w-32 px-3 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none bg-white text-sm"
+                    >
+                      {COUNTRY_CODES.map(c => (
+                        <option key={c.code} value={c.code}>{c.code} ({c.country})</option>
+                      ))}
+                    </select>
+                    <input 
+                      id="phone"
+                      type="tel" 
+                      name="phone"
+                      required
+                      placeholder="Enter mobile number"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="flex-grow px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-shadow" 
+                    />
+                  </div>
                 </div>
 
                 <div>

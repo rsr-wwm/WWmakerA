@@ -6,6 +6,7 @@ import { ProductItem, FaqItem } from '../types';
 import { SocialShare } from '../components/SocialShare';
 import { FaqAccordion } from '../components/FaqAccordion';
 import { SEO } from '../components/SEO';
+import { COUNTRY_CODES } from '../constants';
 
 // Helper for dynamic icons (reused logic for consistency)
 const getFeatureIcon = (title: string, className: string = "w-6 h-6") => {
@@ -37,6 +38,8 @@ const ProductDetail: React.FC = () => {
   // Local state for sidebar form
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
+  const [countryCode, setCountryCode] = useState('+91');
+  const [phone, setPhone] = useState('');
   
   // State for exclusive FAQ opening
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -89,6 +92,10 @@ const ProductDetail: React.FC = () => {
     if (firstName) params.set('firstName', firstName);
     if (lastName) params.set('lastName', lastName);
     if (email) params.set('email', email);
+    if (phone) {
+      params.set('phone', phone);
+      params.set('countryCode', countryCode);
+    }
     
     return params;
   };
@@ -388,6 +395,30 @@ const ProductDetail: React.FC = () => {
                     className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-indigo-500 outline-none text-sm transition-all" 
                     placeholder="john@company.com"
                     />
+                </div>
+
+                <div>
+                    {!isCompact && <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Mobile Number</label>}
+                    <div className="flex gap-2">
+                        <select
+                            value={countryCode}
+                            onChange={(e) => setCountryCode(e.target.value)}
+                            className="w-24 px-2 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-indigo-500 outline-none text-sm transition-all appearance-none cursor-pointer"
+                        >
+                            {COUNTRY_CODES.map((c) => (
+                                <option key={c.code} value={c.code}>
+                                    {c.flag} {c.code}
+                                </option>
+                            ))}
+                        </select>
+                        <input
+                            type="tel"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            className="flex-grow px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-indigo-500 outline-none text-sm transition-all"
+                            placeholder="98765 43210"
+                        />
+                    </div>
                 </div>
                 
                 <button className="w-full bg-indigo-600 text-white font-bold py-4 rounded-xl hover:bg-indigo-700 transition-all shadow-lg hover:shadow-indigo-500/30 transform hover:-translate-y-0.5">

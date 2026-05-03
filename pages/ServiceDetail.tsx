@@ -6,6 +6,7 @@ import { ServiceItem, FaqItem } from '../types';
 import { SocialShare } from '../components/SocialShare';
 import { FaqAccordion } from '../components/FaqAccordion';
 import { SEO } from '../components/SEO';
+import { COUNTRY_CODES } from '../constants';
 
 // Helper function to get relevant icons based on feature title keywords
 const getFeatureIcon = (title: string, className: string = "w-6 h-6") => {
@@ -28,6 +29,8 @@ const ServiceDetail: React.FC = () => {
   // Local state for sidebar form
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
+  const [countryCode, setCountryCode] = useState('+91');
+  const [phone, setPhone] = useState('');
   
   // State for exclusive FAQ opening
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -82,6 +85,8 @@ const ServiceDetail: React.FC = () => {
     if (firstName) params.set('firstName', firstName);
     if (lastName) params.set('lastName', lastName);
     if (email) params.set('email', email);
+    if (phone) params.set('phone', phone);
+    if (countryCode) params.set('countryCode', countryCode);
     
     return params;
   };
@@ -345,6 +350,25 @@ const ServiceDetail: React.FC = () => {
                   className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none text-sm transition-shadow" 
                   
                 />
+                
+                <div className="flex gap-2">
+                  <select
+                    value={countryCode}
+                    onChange={(e) => setCountryCode(e.target.value)}
+                    className="w-24 px-2 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none bg-white text-xs transition-shadow"
+                  >
+                    {COUNTRY_CODES.map(c => (
+                      <option key={c.code} value={c.code}>{c.code}</option>
+                    ))}
+                  </select>
+                  <input 
+                    type="tel" 
+                    placeholder="Mobile Number" 
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="flex-grow px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none text-sm transition-shadow" 
+                  />
+                </div>
                 <button className="w-full bg-indigo-600 text-white font-bold py-3 rounded-lg hover:bg-indigo-700 active:scale-95 transform transition-all duration-150 shadow-md">
                   Request Consultation
                 </button>
@@ -369,7 +393,7 @@ const ServiceDetail: React.FC = () => {
               <div className={`transition-all duration-500 ease-in-out overflow-hidden ${isCompact ? 'max-h-0 opacity-0 mt-0 pt-0 border-0' : 'max-h-24 opacity-100 mt-6 pt-6 border-t border-slate-100'}`}>
                 <div className="text-center">
                   <p className="text-xs text-slate-500 mb-2">Or call us directly:</p>
-                  <a href="tel:+15551234567" className="text-lg font-bold text-indigo-900 hover:text-indigo-700">+1 (555) 123-4567</a>
+                  <a href="tel:+918600280002" className="text-lg font-bold text-indigo-900 hover:text-indigo-700">+91-86002-80002</a>
                 </div>
               </div>
             </div>

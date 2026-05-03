@@ -9,6 +9,37 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Company', path: '/about' },
 ];
 
+export const COUNTRY_CODES = [
+  { code: '+91', country: 'India', flag: '🇮🇳' },
+  { code: '+1', country: 'USA/Canada', flag: '🇺🇸' },
+  { code: '+44', country: 'UK', flag: '🇬🇧' },
+  { code: '+971', country: 'UAE', flag: '🇦🇪' },
+  { code: '+65', country: 'Singapore', flag: '🇸🇬' },
+  { code: '+61', country: 'Australia', flag: '🇦🇺' },
+  { code: '+234', country: 'Nigeria', flag: '🇳🇬' },
+  { code: '+27', country: 'South Africa', flag: '🇿🇦' },
+  { code: '+49', country: 'Germany', flag: '🇩🇪' },
+  { code: '+33', country: 'France', flag: '🇫🇷' },
+  { code: '+81', country: 'Japan', flag: '🇯🇵' },
+  { code: '+86', country: 'China', flag: '🇨🇳' },
+  { code: '+55', country: 'Brazil', flag: '🇧🇷' },
+  { code: '+7', country: 'Russia', flag: '🇷🇺' },
+  { code: '+34', country: 'Spain', flag: '🇪🇸' },
+  { code: '+39', country: 'Italy', flag: '🇮🇹' },
+  { code: '+82', country: 'South Korea', flag: '🇰🇷' },
+  { code: '+52', country: 'Mexico', flag: '🇲🇽' },
+  { code: '+62', country: 'Indonesia', flag: '🇮🇩' },
+  { code: '+92', country: 'Pakistan', flag: '🇵🇰' },
+  { code: '+880', country: 'Bangladesh', flag: '🇧🇩' },
+  { code: '+63', country: 'Philippines', flag: '🇵🇭' },
+  { code: '+84', country: 'Vietnam', flag: '🇻🇳' },
+  { code: '+90', country: 'Turkey', flag: '🇹🇷' },
+  { code: '+20', country: 'Egypt', flag: '🇪🇬' },
+  { code: '+66', country: 'Thailand', flag: '🇹🇭' },
+  { code: '+31', country: 'Netherlands', flag: '🇳🇱' },
+  { code: '+41', country: 'Switzerland', flag: '🇨🇭' },
+];
+
 export const GLOSSARY: GlossaryItem[] = [
     { term: 'API', definition: 'Application Programming Interface. A bridge that allows two software programs to communicate with each other.', category: 'Development' },
     { term: 'A2P 10DLC', definition: 'Application-to-Person 10 Digit Long Code. A system in the US allowing businesses to send SMS via standard phone numbers.', category: 'Messaging' },
@@ -35,9 +66,9 @@ export const GLOSSARY: GlossaryItem[] = [
 export const INDUSTRIES: IndustryItem[] = [
     {
         id: 'fintech',
-        title: 'FinTech & Banking',
-        description: 'Secure, compliant communication infrastructure for modern finance.',
-        fullDescription: 'In the fast-paced world of Finance, trust and speed are currency. We provide banking-grade security for transaction alerts, OTPs, and fraud notifications. Our infrastructure helps you comply with regulations while delivering a seamless user experience.',
+        title: 'Finance & Banking',
+        description: 'Banking-grade security for teams that move fast.',
+        fullDescription: 'In finance, trust and speed are everything. We provide the secure plumbing for transaction alerts, login codes, and fraud notices. We help you stay compliant without slowing down your users.',
         icon: '💳',
         challenges: [
             { title: 'Fraud Prevention', description: 'Preventing unauthorized access with speed.' },
@@ -82,8 +113,8 @@ export const INDUSTRIES: IndustryItem[] = [
     {
         id: 'healthcare',
         title: 'Healthcare',
-        description: 'HIPAA-compliant patient engagement and appointment management.',
-        fullDescription: 'Reduce no-shows and improve patient outcomes with automated communication. From appointment reminders to post-care follow-ups, our secure platform ensures patient data remains private while keeping lines of communication open.',
+        description: 'Better care, less paperwork. Keeping your patients connected.',
+        fullDescription: 'Stop chasing patients on the phone. We automate your reminders and follow-ups so your staff can focus on care. Everything we build is secure and built to keep patient data private and compliant.',
         icon: '🏥',
         challenges: [
             { title: 'Missed Appointments', description: 'No-shows costing revenue and time.' },
@@ -126,9 +157,9 @@ export const INDUSTRIES: IndustryItem[] = [
     },
     {
         id: 'ecommerce',
-        title: 'Retail & E-commerce',
-        description: 'Drive sales with omnichannel marketing and support.',
-        fullDescription: 'Turn one-time buyers into loyal fans. Our suite for retail allows you to send personalized offers, recover abandoned carts via WhatsApp, and provide instant order tracking updates without human intervention.',
+        title: 'Stores & E-commerce',
+        description: 'Turn shoppers into regulars. Sell more, automated or not.',
+        fullDescription: 'Stop losing sales to abandoned carts and slow replies. We help you reach customers on the apps they actually use—like WhatsApp—to recover sales and keep people coming back for more.',
         icon: '🛒',
         challenges: [
             { title: 'Cart Abandonment', description: 'Users leaving before checkout.' },
@@ -172,8 +203,8 @@ export const INDUSTRIES: IndustryItem[] = [
     {
         id: 'logistics',
         title: 'Logistics & Transport',
-        description: 'Real-time fleet tracking and driver communication.',
-        fullDescription: 'Keep your fleet moving and your customers informed. Our APIs connect your TMS (Transport Management System) to drivers and end-customers, providing real-time location updates, delivery proof, and route optimization alerts.',
+        description: 'Total visibility, from warehouse to doorstep.',
+        fullDescription: 'Getting things from A to B is hard enough. We make it easier with real-time tracking, driver alerts, and digital proof of delivery that syncs instantly with your office.',
         icon: '🚚',
         challenges: [
             { title: 'Delivery Visibility', description: 'Customers anxious about package location.' },
@@ -217,8 +248,8 @@ export const INDUSTRIES: IndustryItem[] = [
     {
         id: 'real-estate',
         title: 'Real Estate',
-        description: 'Automate lead qualification and viewing schedules.',
-        fullDescription: 'Speed is everything in Real Estate. Respond to portal leads instantly with our AI agents. Schedule viewings automatically, send virtual tour links via SMS, and keep buyers engaged until they are ready to sign.',
+        description: 'Don\'t let leads go cold. Smart scheduling for busy agents.',
+        fullDescription: 'In real estate, being first matters. We help you reply to leads the second they come in, book viewings automatically, and keep buyers engaged while you\'re out in the field.',
         icon: '🏘️',
         challenges: [
             { title: 'Slow Response', description: 'Losing leads to faster agents.' },
@@ -262,8 +293,8 @@ export const INDUSTRIES: IndustryItem[] = [
     {
         id: 'education',
         title: 'Education',
-        description: 'Student engagement and campus safety alerts.',
-        fullDescription: 'Connect students, faculty, and administration. Use our platform for emergency broadcasting, admissions support chatbots, and automated course reminders to improve student success and safety.',
+        description: 'Connecting campuses. Fast alerts and easier admin.',
+        fullDescription: 'Keep your students and faculty on the same page. From emergency alerts that blast in seconds to bots that answer enrollment questions 24/7, we help schools run smoother.',
         icon: '🎓',
         challenges: [
             { title: 'Emergency Alerts', description: 'Reaching everyone instantly on campus.' },
@@ -309,16 +340,16 @@ export const INDUSTRIES: IndustryItem[] = [
 export const PROBLEMS: ProblemItem[] = [
   {
     id: 'low-customer-engagement',
-    title: 'Customers Ignoring Emails',
-    shortDescription: 'Are your emails going to spam or just being ignored?',
-    fullDescription: 'Most people have hundreds of unread emails. If you send a sale alert or an appointment reminder via email, there is an 80% chance it won\'t be seen. This "Low Engagement" kills your sales. We fix this by moving your urgent messages to channels people actually look at: SMS and WhatsApp.',
+    title: 'Nobody is Reading Your Emails',
+    shortDescription: 'Your messages are landing in spam or just being ignored.',
+    fullDescription: 'Let\'s be honest: your customers have hundreds of unread emails. If you\'re still relying on email for urgent stuff like sale alerts or reminders, you\'re probably being ignored. We fix this by moving your most important messages to where people actually look—SMS and WhatsApp.',
     symptoms: [
-      'Email open rates below 20%',
-      'Customers missing appointments',
-      'No one replies to your newsletters',
-      'Phone calls going unanswered'
+      'Open rates that make you want to cry (below 20%)',
+      'Patients or clients totally forgetting their appointments',
+      'Dead silence after you send out a newsletter',
+      'Endless ringing phones with no one picking up'
     ],
-    ourSolution: 'We implement "Omnichannel Messaging". We connect your system to a Bulk SMS and WhatsApp API. Messages land directly on the phone lock screen, where 98% of them are read within 3 minutes.',
+    ourSolution: 'We go where your customers are. By hooking your system into SMS and WhatsApp, your messages land right on their lock screens. 98% of these get read within minutes, not days.',
     relatedServices: ['rcs-business-messaging', 'bulk-sms-gateway', 'whatsapp-business', 'ai-customization'],
     useCases: [
       { title: 'E-commerce Flash Sale', description: 'A retailer sent an SMS blast during a holiday sale and saw 40% immediate engagement compared to 2% via email.' },
@@ -349,16 +380,16 @@ export const PROBLEMS: ProblemItem[] = [
   },
   {
     id: 'lead-leakage',
-    title: 'Losing Leads to Slow Follow-up',
-    shortDescription: 'People call you, you miss it, they call your competitor.',
-    fullDescription: 'Speed is everything. If a potential customer calls you and you don\'t answer, they won\'t leave a voicemail—they will call the next business on Google. This is called "Lead Leakage". You are paying for ads to get the phone to ring, but losing money because you can\'t answer fast enough.',
+    title: 'Losing Sales to Missed Calls',
+    shortDescription: 'If you don\'t answer, they\'ll just call the next person.',
+    fullDescription: 'In business, the first person to pick up usually wins the sale. If a lead calls you and hits voicemail, they aren\'t going to leave a message—they\'re calling your competitor. You\'re paying for ads to make the phone ring, so don\'t let that money go to waste.',
     symptoms: [
-      'Missed calls not returned immediately',
-      'Contact forms sitting in inbox for days',
-      'Sales team forgetting to follow up',
-      'High ad spend with low sales'
+      'Missed calls that stay missed for hours',
+      'Contact forms that sit in your inbox until they\'re cold',
+      'A sales team that "forgets" to follow up',
+      'Burning money on ads with nothing to show for it'
     ],
-    ourSolution: 'We install a "Safety Net". 1. Missed Call Auto-Reply: If you miss a call, our system instantly texts the caller: "Sorry we missed you! How can we help?". 2. Instant Alerts: Your sales team gets a WhatsApp notification the second a lead arrives.',
+    ourSolution: 'We build a safety net for your leads. If you miss a call, our system texts them back instantly: "Hey, sorry we missed you! How can we help?". We also ping your team on WhatsApp the second a new lead hits your site.',
     relatedServices: ['missed-call-services', 'bulk-sms-gateway', 'enterprise-software'],
     useCases: [
       { title: 'Real Estate Inquiry', description: 'A realtor saved a $500k sale because an automated text held the lead while he was driving.' },
@@ -389,16 +420,16 @@ export const PROBLEMS: ProblemItem[] = [
   },
   {
     id: 'data-loss-downtime',
-    title: 'Fear of Data Loss & Hacking',
-    shortDescription: 'What happens if your server crashes or you get hacked today?',
-    fullDescription: 'Your business runs on data: customer lists, invoices, and contracts. If a computer crashes, a virus hits (Ransomware), or an employee accidentally deletes a folder, that data could be gone forever. "Hoping" it doesn\'t happen is not a strategy. You need an automated, bulletproof backup system.',
+    title: 'The Constant Fear of Data Loss',
+    shortDescription: 'What happens if your system crashes today?',
+    fullDescription: 'Think about your customer lists, invoices, and contracts. If a server dies or someone gets hit by ransomware, that data could be gone forever. "Hoping for the best" isn\'t a backup plan. You need a setup that saves your work automatically so you never have to worry about a crash again.',
     symptoms: [
-      'No automatic daily backups',
-      'Files stored on just one laptop',
-      'Fear of ransomware attacks',
-      'System crashes halting work'
+      'Zero automatic backups (or you do them "when you remember")',
+      'All your files are on one laptop (that could be stolen)',
+      'Losing sleep over the latest hacking news',
+      'A system crash that stops your business cold'
     ],
-    ourSolution: 'We implement the "3-2-1 Backup Rule" automatically. We encrypt your data and send copies to secure Cloud Servers (AWS/Google). If your office burns down, we can restore your entire business from the cloud in hours, not days.',
+    ourSolution: 'We set up the "3-2-1" backup rule so you don\'t have to. We encrypt your data and beam it to secure cloud servers. If your office has a disaster, we can get you back up and running in hours with everything intact.',
     relatedServices: ['enterprise-software', 'web-development', 'managed-aws'],
     useCases: [
       { title: 'Ransomware Recovery', description: 'A law firm was hit by a virus. We wiped their servers and restored from a 1-hour-old cloud backup. Zero data loss.' },
@@ -429,16 +460,16 @@ export const PROBLEMS: ProblemItem[] = [
   },
   {
     id: 'cart-abandonment',
-    title: 'Shoppers Leaving Without Buying',
-    shortDescription: '70% of people add items to the cart and then leave. Get them back.',
-    fullDescription: 'Cart Abandonment is the #1 revenue killer for E-commerce. Customers get distracted, or they decide to compare prices and forget to come back. Sending a generic "You forgot this" email often lands in the Promotions tab. You need a way to grab their attention immediately to close the sale.',
+    title: 'People are Leaving Without Buying',
+    shortDescription: '70% of shoppers add items to their cart and then just... leave.',
+    fullDescription: 'Cart abandonment is the silent killer of online stores. People get distracted, they go to compare prices, or they just forget. If you send a generic "You forgot this" email, it likely lands in a tab they never check. You need a way to grab their attention right when they\'re still thinking about that purchase.',
     symptoms: [
-      'High traffic, low sales',
-      'Lots of "Initiated Checkout" events',
-      'Low email click-through rates',
-      'Inventory tied up in abandoned carts'
+      'Tons of traffic but mediocre sales',
+      'A huge list of "Initiated Checkouts" that go nowhere',
+      'Emails that no one clicks on',
+      'Stock that\'s "reserved" in carts but never paid for'
     ],
-    ourSolution: 'We deploy "Recovery Bots". 1 hour after they leave, we send a friendly WhatsApp or SMS: "Hey [Name], your items are saved! Here is a 5% discount if you complete the order now." This personal nudge recovers 20-30% of lost sales.',
+    ourSolution: 'We deploy friendly recovery bots. About an hour after someone leaves, we send a quick WhatsApp or SMS: "Hey [Name], just wanted to let you know we\'ve saved your items! Here\'s a 5% discount if you want to finish up now." It\'s a gentle nudge that recovers about 20-30% of those lost sales.',
     relatedServices: ['whatsapp-business', 'rcs-business-messaging', 'email-marketing'],
     useCases: [
       { title: 'Fashion Retailer Recovery', description: 'A brand sends a WhatsApp message with a 10% discount code 1 hour after cart abandonment, recovering $15k in monthly sales.' },
@@ -469,16 +500,16 @@ export const PROBLEMS: ProblemItem[] = [
   },
   {
     id: 'operational-inefficiency',
-    title: 'Too Much Manual Data Entry',
-    shortDescription: 'Staff wasting hours copying data from Excel to CRM?',
-    fullDescription: 'If your employees are spending 3 hours a day copying names from a spreadsheet into an invoice system, you are burning money. Humans make typos, get tired, and are expensive. Robots (Scripts and APIs) are free, instant, and never make mistakes. We automate the boring stuff so your team can do real work.',
+    title: 'Way Too Much Manual Data Entry',
+    shortDescription: 'Is your team wasting hours copy-pasting from Excel?',
+    fullDescription: 'If your staff spends half their day moving names from a spreadsheet into an invoice system, you\'re essentially burning money. Humans get tired, we make typos, and we\'re expensive. Robots (well, simple scripts and APIs) don\'t mind the boring stuff. We automate these repetitive tasks so your team can focus on work that actually matters.',
     symptoms: [
-      'Copy-pasting between software',
-      'Frequent typing errors',
-      'Staff burnout from boring tasks',
-      'Slow order processing'
+      'Endless copy-pasting between different apps',
+      'Typos that cause headaches later',
+      'A team that\'s bored to tears by their daily tasks',
+      'Orders that take way too long to process'
     ],
-    ourSolution: 'We build "Digital Bridges" (APIs). We make your website talk to your accounting software automatically. When a sale happens, the invoice is created, the email is sent, and the inventory is updated instantly without a human touching a keyboard.',
+    ourSolution: 'We build digital bridges between your apps. We make your website talk to your accounting software so that when a sale happens, the invoice is created, the email is sent, and your stock is updated—all without anyone touching a keyboard.',
     relatedServices: ['enterprise-software', 'ai-customization', 'web-development'],
     useCases: [
       { title: 'Accounting Sync', description: 'A wholesale distributor saved 40 hours of manual data entry per week by syncing their e-commerce sales directly to QuickBooks.' },
@@ -509,16 +540,16 @@ export const PROBLEMS: ProblemItem[] = [
   },
   {
     id: 'support-overload',
-    title: 'Customer Support is Overwhelmed',
-    shortDescription: 'Drowning in "Where is my order?" tickets?',
-    fullDescription: 'As you grow, support volume explodes. Hiring more agents is expensive and hard to manage. If 80% of your questions are repetitive (Hours? Pricing? Tracking?), you don\'t need a human to answer them. You need a smart system that filters these out, leaving humans to handle the complex issues.',
+    title: 'Your Support Team is Drowning',
+    shortDescription: 'Buried in "Where is my order?" tickets?',
+    fullDescription: 'As you grow, support requests tend to explode. Hiring more people is expensive and can be a management nightmare. If 80% of your questions are the same (Where\'s my tracking? What are your hours?), you don\'t need a human to answer them. You need a smart system to filter the noise so your team can handle the tough stuff.',
     symptoms: [
-      'Long hold times on phone',
-      'Support tickets piling up',
-      'High agent turnover',
-      'Angry customers on social media'
+      'Customers stuck on hold for way too long',
+      'Piles of support tickets that never seem to end',
+      'Stressed staff who are burnt out',
+      'People complaining about you on social media'
     ],
-    ourSolution: 'We install an "AI Gatekeeper". A smart Chatbot on WhatsApp or Web answers the common questions instantly. It connects to your shipping system to give tracking numbers automatically. Only hard questions are passed to your human agents.',
+    ourSolution: 'We set up an "AI Gatekeeper". A smart bot on WhatsApp or your site handles the common questions instantly—like looking up tracking numbers. Only the complicated stuff gets passed through to your actual team members.',
     relatedServices: ['ai-customization', 'whatsapp-business', 'ivr-systems'],
     useCases: [
       { title: 'E-commerce FAQ Bot', description: 'A retailer automated 85% of "Where is my order?" queries, allowing their team to focus on high-value sales chats.' },
@@ -549,15 +580,15 @@ export const PROBLEMS: ProblemItem[] = [
   },
   {
     id: 'high-churn-rate',
-    title: 'High Customer Churn',
-    shortDescription: 'Customers buying once and never coming back?',
-    fullDescription: 'Acquiring a new customer costs 5x more than retaining an old one. If your churn rate is high, you are leaking value. Customers leave because they feel unappreciated or forget you exist. We deploy automated "Lifecycle Marketing" to keep your brand top-of-mind without spamming.',
+    title: 'Your Customers are Disappearing',
+    shortDescription: 'People buy once and then you never hear from them again.',
+    fullDescription: 'It\'s common knowledge: keeping an old customer is way cheaper than hunting for a new one. If people are buying once and then vanishing, your business is essentially a leaky bucket. Most people leave because they feel ignored or just forget you exist. We help you fix that with "Lifecycle Marketing" that stays in touch without being annoying.',
     symptoms: [
-      'Low repeat purchase rate',
-      'Customers switching to competitors',
-      'No feedback loops'
+      'Almost zero repeat buyers',
+      'Customers jumping ship for your competitors',
+      'You have no idea what your customers actually think of you'
     ],
-    ourSolution: 'We implement loyalty loops using SMS and Email. A week after purchase: "How was it?". On their birthday: "Here is a gift". These micro-interactions build emotional connection and drastically reduce churn.',
+    ourSolution: 'We build "Loyalty Loops" using SMS and Email. Maybe it\'s a quick "How was everything?" a week after they buy, or a surprise gift on their birthday. These small touches keep you in their mind and make them feel like more than just a transaction.',
     relatedServices: ['omnichannel-marketing-suite', 'customer-engagement-overhaul'],
     useCases: [
       { title: 'SaaS Retention Loop', description: 'A software company sent targeted WhatsApp "New Feature" tips to inactive users, reducing monthly churn by 18%.' },
@@ -588,15 +619,15 @@ export const PROBLEMS: ProblemItem[] = [
   },
   {
     id: 'shadow-it-risks',
-    title: 'Shadow IT & Security Risks',
-    shortDescription: 'Employees using unapproved apps to do work?',
-    fullDescription: 'When IT moves too slow, employees use their own tools (Dropbox, WhatsApp, Trello) to get work done. This is "Shadow IT", and it is a massive security risk. Data is leaking outside your control. We build official, secure, and user-friendly internal tools that employees actually want to use.',
+    title: 'Staff Using Random Apps for Work',
+    shortDescription: 'Are your employees using their own accounts for company data?',
+    fullDescription: 'When your official tools are slow or hard to use, people start using their own (like a private WhatsApp group or a personal Dropbox). This is "Shadow IT," and it\'s a huge security risk. Your company data is floating around in places you can\'t control. We solve this by building official tools that are actually faster and easier than the ones they\'re trying to replace.',
     symptoms: [
-      'Sensitive data in personal emails',
-      'Unsecured file sharing',
-      'Compliance violations'
+      'Sensitive files being sent to personal Gmail accounts',
+      'Unsecured file transfers you didn\'t approve',
+      'Worrying about compliance rules being broken'
     ],
-    ourSolution: 'We audit your workflows and build secure internal dashboards and communication tools. We give employees the speed they need with the security you require.',
+    ourSolution: 'We look at how your team actually works and build secure, private dashboards and chat tools specifically for them. We give your staff the speed they want, while giving you the security you need.',
     relatedServices: ['cyber-defense-shield', 'enterprise-software'],
     useCases: [
       { title: 'Official Secure Chat', description: 'A law firm replaced external WhatsApp groups with a secure internal encrypted chat app, preventing data leaks.' },
@@ -632,9 +663,9 @@ export const SOLUTIONS: SolutionItem[] = [
     id: 'customer-engagement-overhaul',
     title: 'Customer Engagement Overhaul',
     focus: 'Retention & Loyalty',
-    outcome: '300% increase in response rates',
-    description: 'Replace silence with conversation using WhatsApp and SMS.',
-    fullDescription: 'We replace your "Do Not Reply" emails with interactive WhatsApp and SMS channels. We set up Verified Business profiles that let customers trust you. Then, we build automated flows to wish them happy birthday, remind them of renewals, or offer loyalty rewards. It turns a one-time buyer into a lifelong fan.',
+    outcome: 'Getting people to actually reply',
+    description: 'Swap silence for conversation on WhatsApp and SMS.',
+    fullDescription: 'Stop sending those boring "Do Not Reply" emails—nobody reads them anyway. We help you switch to real two-way chats on WhatsApp and SMS. We\'ll set up official verified profiles so people trust your messages, then build automated sequences for things like birthdays or reminders. It makes your customers feel like they\'re dealing with a real person, not just a robot.',
     features: [
       { title: 'WhatsApp Business API', benefit: 'Official Green Tick verification for trust.' },
       { title: 'RCS Rich Messaging', benefit: 'Send carousels and images like an app.' },
@@ -671,11 +702,11 @@ export const SOLUTIONS: SolutionItem[] = [
   },
   {
     id: 'digital-transformation-jumpstart',
-    title: 'Digital Transformation Jumpstart',
+    title: 'Getting Your Business into the Cloud',
     focus: 'Modernization',
-    outcome: 'Paperless, Cloud-based Operations',
-    description: 'Move your old legacy business into the modern cloud.',
-    fullDescription: 'Still running your business on Excel sheets and paper files? We digitize everything. We move your files to the secure Cloud, build a custom dashboard to track your KPIs, and give your employees mobile apps so they can work from anywhere. It makes your business faster, lighter, and ready to scale.',
+    outcome: 'Less Paper, More Freedom',
+    description: 'Move your old-school business onto modern cloud tech.',
+    fullDescription: 'If you\'re still running your business on tangled Excel sheets and paper folders, it\'s time for an upgrade. We digitize your records, move everything to the secure cloud, and build a dashboard that shows you what\'s happening in your business in real-time. Your team will be able to work from anywhere, and you\'ll finally have a system that can grow with you.',
     features: [
       { title: 'Cloud Migration', benefit: 'Access your data securely from anywhere.' },
       { title: 'Custom Dashboard', benefit: 'See your sales and inventory in real-time.' },
@@ -712,11 +743,11 @@ export const SOLUTIONS: SolutionItem[] = [
   },
   {
     id: 'ai-automation-workforce',
-    title: 'AI Automation Workforce',
+    title: 'AI That Actually Works for You',
     focus: 'Efficiency',
-    outcome: 'Automate 80% of repetitive admin',
-    description: 'Hire digital workers that never sleep.',
-    fullDescription: 'Imagine hiring a staff member who reads 1,000 documents a minute, answers the phone instantly, and never takes a holiday. That is what our AI Agents do. We train custom AI models on your specific business data to handle support, data entry, and scheduling automatically.',
+    outcome: 'Automate the boring stuff',
+    description: 'Digital assistants that never sleep.',
+    fullDescription: 'Imagine having a staff member who can read a thousand docs a minute, works 24/7, and never takes a sick day. That\'s what our custom AI agents do. We don\'t just give you a generic bot; we train an AI on your specific business files so it can handle support calls, data entry, and scheduling without making a sound.',
     features: [
       { title: 'Custom LLM Training', benefit: 'AI that knows your specific business rules.' },
       { title: 'Voice AI Agents', benefit: 'Robots that speak naturally on the phone.' },
@@ -753,11 +784,11 @@ export const SOLUTIONS: SolutionItem[] = [
   },
   {
     id: 'omnichannel-marketing-suite',
-    title: 'Omnichannel Marketing Suite',
+    title: 'Marketing That Actually Connects',
     focus: 'Growth',
-    outcome: 'Unified customer journey',
-    description: 'One message, every channel. Marketing made simple.',
-    fullDescription: 'Stop managing Email in one tab, SMS in another, and Facebook ads in a third. Our suite connects them all. If a customer clicks an email, we trigger an SMS. If they reply on WhatsApp, we stop the email sequence. It ensures you talk to your customer with one consistent voice, wherever they are.',
+    outcome: 'One consistent voice',
+    description: 'Keep your message the same, no matter where customers see it.',
+    fullDescription: 'Managing your email in one window, SMS in another, and WhatsApp in a third is a headache. We connect them all into one smooth system. If someone buys through an email, we stop the SMS reminders automatically. It means you\'re always talking to your customers with one voice, wherever they happen to be.',
     features: [
       { title: 'Unified Inbox', benefit: 'See all chats in one screen.' },
       { title: 'Cross-Channel Logic', benefit: 'If Email fails -> Send SMS.' },
@@ -794,11 +825,11 @@ export const SOLUTIONS: SolutionItem[] = [
   },
   {
     id: 'remote-infrastructure-management',
-    title: 'Remote Infrastructure Management',
+    title: 'Watching Your Tech 24/7',
     focus: 'Stability & Security',
-    outcome: '99.99% Uptime Guarantee',
-    description: 'Keep your servers and remote teams running 24/7.',
-    fullDescription: 'With teams working from everywhere, you cannot afford downtime. Our RIM solution monitors your servers, networks, and employee devices 24/7. We detect issues before they break your business, apply security patches automatically, and ensure your VPNs are always fast and secure.',
+    outcome: 'Peace of mind',
+    description: 'We keep your servers and remote teams running while you sleep.',
+    fullDescription: 'When your team is working from all over the world, you can\'t afford for your tools to go down. We monitor your servers and networks around the clock. We usually catch problems before they even affect your business, so you never have to deal with a sudden "everything is broken" phone call.',
     features: [
         { title: '24/7 Server Monitoring', benefit: 'Sleep well knowing we are watching.' },
         { title: 'Automated Patching', benefit: 'Always secure against latest threats.' },
@@ -835,11 +866,11 @@ export const SOLUTIONS: SolutionItem[] = [
   },
   {
     id: 'ecommerce-acceleration',
-    title: 'E-commerce Acceleration',
-    focus: 'Sales Velocity',
-    outcome: '2X Conversion Rate',
-    description: 'Speed, UX, and Checkout optimization for online stores.',
-    fullDescription: 'Slow sites kill sales. Confusing checkouts lose customers. We audit your online store and rebuild the slow parts. We implement "One-Click Checkout", optimize images for millisecond loading, and set up AI product recommendations that increase order value.',
+    title: 'Speeding Up Your Store',
+    focus: 'Sales Speed',
+    outcome: 'More happy customers',
+    description: 'Make your shop faster and easier to buy from.',
+    fullDescription: 'A slow website is a sales killer. If your checkout is confusing, people will just leave. We audit your store and fix the slow parts. We\'ll set up easy one-click checkouts, optimize your images so they load instantly, and add smart recommendations that actually help people find what they\'re looking for.',
     features: [
         { title: 'Speed Optimization', benefit: 'Sub-second load times.' },
         { title: 'Checkout Flow Redesign', benefit: 'Reduce drop-offs by 40%.' },
@@ -876,11 +907,11 @@ export const SOLUTIONS: SolutionItem[] = [
   },
   {
     id: 'legacy-modernization',
-    title: 'Legacy System Modernization',
-    focus: 'Innovation',
-    outcome: 'Future-proof architecture',
-    description: 'Rebuild old software without losing data.',
-    fullDescription: 'Trapped by software built in 2005? We help you migrate from old, clunky on-premise servers to modern, cloud-native microservices. We perform a "Strangler Fig" migration, replacing pieces of your system one by one so you never experience downtime.',
+    title: 'Updating Your Old Systems',
+    focus: 'Future-Proofing',
+    outcome: 'Tech that actually works',
+    description: 'Rebuild your old software without losing a single file.',
+    fullDescription: 'Still using software from 2005? We know the feeling. We help you move off those clunky old servers to a modern cloud setup that works perfectly on your phone. We do it piece-by-piece, so your business never has to stop running while we\'re upgrading the engine.',
     features: [
       { title: 'Code Refactoring', benefit: 'Clean, maintainable code.' },
       { title: 'Database Migration', benefit: 'No data loss guaranteed.' },
@@ -917,11 +948,11 @@ export const SOLUTIONS: SolutionItem[] = [
   },
   {
     id: 'cyber-defense-shield',
-    title: 'Cyber Defense Shield',
-    focus: 'Risk Management',
-    outcome: 'Zero-Trust Security Posture',
-    description: 'Comprehensive security for enterprise data.',
-    fullDescription: 'Cyber attacks are automated; your defense should be too. We deploy a multi-layered security shield around your digital assets. From automated penetration testing to real-time intrusion detection and employee phishing training.',
+    title: 'Your Digital Bodyguard',
+    focus: 'Safety',
+    outcome: 'Worry-free security',
+    description: 'Keep your data locked down and your business safe.',
+    fullDescription: 'Hackers never sleep, and they use automated bots to do their dirty work. Your defense needs to be just as smart. We wrap your business in a multi-layered shield that catches threats in real-time. From training your team on how to spot phishing to testing your walls for weaknesses, we\'ve got you covered.',
     features: [
       { title: 'Penetration Testing', benefit: 'Find holes before hackers do.' },
       { title: 'Endpoint Protection', benefit: 'Secure every laptop.' },
@@ -958,11 +989,11 @@ export const SOLUTIONS: SolutionItem[] = [
   },
   {
     id: 'supply-chain-intel',
-    title: 'Supply Chain Intelligence',
+    title: 'Smarter Tracking for Your Stuff',
     focus: 'Logistics',
-    outcome: 'Real-time asset tracking',
-    description: 'IoT and AI for smarter logistics.',
-    fullDescription: 'Know exactly where your goods are. We connect IoT sensors to a central dashboard, giving you real-time visibility into your supply chain. AI predicts delays based on weather and traffic, allowing you to route around problems.',
+    outcome: 'Knowing where everything is',
+    description: 'Use sensors and AI to keep your logistics on track.',
+    fullDescription: 'Stop guessing where your shipments are. We use smart sensors top-to-bottom so you have a live view of your entire supply chain. Our AI even predicts delays from weather or traffic, so you can re-route your drivers before they get stuck in a gridlock.',
     features: [
       { title: 'Asset Tracking', benefit: 'GPS precision.' },
       { title: 'Route Optimization', benefit: 'Save fuel and time.' },
@@ -999,11 +1030,11 @@ export const SOLUTIONS: SolutionItem[] = [
   },
   {
     id: 'fintech-compliance-vault',
-    title: 'FinTech Compliance Vault',
-    focus: 'Finance',
-    outcome: 'Automated Regulatory Reporting',
-    description: 'Bank-grade security and compliance tools.',
-    fullDescription: 'Building a FinTech app is hard; following the law is harder. Our vault provides pre-built modules for KYC (Know Your Customer), AML (Anti-Money Laundering), and secure ledger management. Launch your fintech product fast without worrying about regulators shutting you down.',
+    title: 'Easy Compliance for Finance',
+    focus: 'Legal & Safety',
+    outcome: 'Getting through audits faster',
+    description: 'Bank-grade security rules that follow the law.',
+    fullDescription: 'Building a finance app is stressful; figuring out the legal rules is even worse. We provide a secure vault with everything you need to follow KYC and AML laws from day one. It lets you launch your product fast without worrying that a regulator is going to come knocking.',
     features: [
       { title: 'Auto-KYC', benefit: 'Verify users in seconds.' },
       { title: 'Transaction Monitoring', benefit: 'Flag suspicious activity.' },
@@ -1043,10 +1074,10 @@ export const SOLUTIONS: SolutionItem[] = [
 export const PRODUCTS: ProductItem[] = [
   {
     id: 'white-label-reseller',
-    title: 'White Label Reseller Platform',
-    tagline: 'Start your own Digital Agency instantly.',
-    description: 'Rebrand our powerful SMS, Voice, and Marketing platforms as your own. Keep 100% of the profits.',
-    fullDescription: 'Imagine owning a software company without writing a single line of code. We give you the platform. You put your logo on it. You set the prices. You sell SMS, WhatsApp, and Voice services to your local clients. We handle the servers and connections; you handle the relationships and keep the profit.',
+    title: 'Run Your Own Agency',
+    tagline: 'Start your own software business today.',
+    description: 'Sell our SMS, Voice, and Marketing tools as your own and keep the profits.',
+    fullDescription: 'Ever wanted to run your own software company? Now you can, without touching a single line of code. We give you the platform, you put your logo on it, and you keep all the profits. We handle the technical headaches like servers and connections; you focus on building your brand.',
     features: [
       { title: 'Your Brand', description: 'Your Logo, Your Domain, Your Colors.', benefit: 'Build your own asset.' },
       { title: 'Set Your Prices', description: 'Buy wholesale, sell retail.', benefit: 'Control your margins.' },
@@ -1084,9 +1115,9 @@ export const PRODUCTS: ProductItem[] = [
   {
     id: 'voicebot-studio',
     title: 'VoiceBot Studio',
-    tagline: 'Build intelligent voice agents in minutes.',
-    description: 'No-code platform to design IVR flows and AI voice assistants.',
-    fullDescription: 'Building a phone menu used to be hard. With VoiceBot Studio, you just draw a flowchart. "Press 1 for Sales, Press 2 for Support". Or, add an AI Brain that speaks naturally: "How can I help you today?". It allows you to build a professional call center system in your browser.',
+    tagline: 'Build smart voice bots without the headache.',
+    description: 'A simple way to create phone menus and AI voice helpers.',
+    fullDescription: 'Setting up a phone menu used to be a nightmare. With VoiceBot Studio, you just draw a simple flowchart—like "Press 1 for Sales." You can even add an AI brain that talks to your customers naturally. It\'s like having a professional call center that you can manage right from your browser.',
     features: [
       { title: 'Visual Builder', description: 'Drag and drop blocks.', benefit: 'No coding required.' },
       { title: 'AI Speech', description: 'Text-to-Speech in 50 languages.', benefit: 'Global support.' },
@@ -1123,10 +1154,10 @@ export const PRODUCTS: ProductItem[] = [
   },
   {
     id: 'secure-gate-2fa',
-    title: 'SecureGate 2FA API',
-    tagline: 'The fastest way to verify users.',
-    description: 'Enterprise-grade OTP (One Time Password) delivery via SMS and WhatsApp.',
-    fullDescription: 'When a user logs in, they need that security code FAST. If it takes 2 minutes, they quit. SecureGate uses premium "Priority Routes" to ensure OTPs arrive in under 5 seconds globally. It automatically switches to WhatsApp if SMS fails, guaranteeing delivery.',
+    title: 'SecureGate 2FA',
+    tagline: 'Verify your users in seconds.',
+    description: 'Fast, reliable login codes via SMS and WhatsApp.',
+    fullDescription: 'When a user logs in, they need that security code right now. If it takes even a minute, they\'re gone. SecureGate uses the fastest routes possible to get those codes to their phones in under 5 seconds. If SMS is slow, we automatically try WhatsApp to make sure they get in.',
     features: [
       { title: 'Flash Delivery', description: 'Sub-5-second latency.', benefit: 'Happy users.' },
       { title: 'Auto-Fallback', description: 'SMS -> WhatsApp -> Voice.', benefit: '100% Delivery.' },
@@ -1164,9 +1195,9 @@ export const PRODUCTS: ProductItem[] = [
   {
     id: 'stockflow-pro',
     title: 'StockFlow Pro',
-    tagline: 'AI Inventory Management.',
-    description: 'Predict demand and automate restocking for e-commerce.',
-    fullDescription: 'Running out of stock costs you money. Buying too much stock kills your cash flow. StockFlow Pro uses AI to look at your past sales and predict exactly what you need to buy next week. It connects to Amazon, Shopify, and your warehouse to keep everything in sync.',
+    tagline: 'Inventory management that thinks for you.',
+    description: 'Predict what you need to buy and automate your restocking.',
+    fullDescription: 'Running out of stock is frustrating, but having too much tied up in a warehouse is just as bad. StockFlow Pro uses AI to look at your sales and tell you exactly what to reorder. It syncs with Amazon and Shopify so your numbers are always right.',
     features: [
       { title: 'Demand Prediction', description: 'AI forecasts sales.', benefit: 'Never run out.' },
       { title: 'Multi-Channel', description: 'Syncs Amazon & Shopify.', benefit: 'No overselling.' },
@@ -1207,9 +1238,9 @@ export const PRODUCTS: ProductItem[] = [
   {
     id: 'crm-connector-hub',
     title: 'CRM Connector Hub',
-    tagline: 'Unify your data silos.',
-    description: 'Middleware to sync Salesforce, HubSpot, and your custom apps in real-time.',
-    fullDescription: 'Stop copy-pasting data. The CRM Connector Hub acts as the central nervous system for your business data. It listens for changes in one app and instantly updates all others. New lead in Facebook Ads? It\'s in Salesforce instantly. Order in Shopify? It\'s in HubSpot.',
+    tagline: 'Get all your apps talking to each other.',
+    description: 'A simple way to sync systems like Salesforce and HubSpot in real-time.',
+    fullDescription: 'Stop wasting time with manual data entry. The CRM Connector Hub is the central brain for your business data. It watches for changes in one app and instantly updates the others. New lead on Facebook? It\'s in your CRM in seconds. New sale in Shopify? Your marketing team knows about it instantly.',
     features: [
         { title: 'Real-time Sync', description: 'No 15-min delays.', benefit: 'Instant data accuracy.' },
         { title: 'Custom Mappings', description: 'Map any field to any field.', benefit: 'Flexible data structure.' },
@@ -1247,9 +1278,9 @@ export const PRODUCTS: ProductItem[] = [
   {
     id: 'social-stream-auto',
     title: 'SocialStream Auto',
-    tagline: 'AI Social Media Manager.',
-    description: 'Generate, schedule, and post content to LinkedIn, X, and Instagram automatically.',
-    fullDescription: 'Maintaining an active social presence is hard work. SocialStream Auto uses Gemini AI to read your company blog, creating engaging social posts automatically. It schedules them for optimal times and even replies to comments using your brand voice.',
+    tagline: 'Your social media on autopilot.',
+    description: 'Create and schedule posts for LinkedIn, X, and Instagram using AI.',
+    fullDescription: 'Keeping your social media alive is a full-time job. SocialStream Auto reads your blog posts and turns them into interesting updates for LinkedIn, X, and Instagram. It schedules them for when your audience is actually online, so you don\'t have to worry about posting at 2 AM.',
     features: [
         { title: 'Content Repurposing', description: 'Turn blog into tweets.', benefit: 'Multiply content value.' },
         { title: 'Auto-Scheduling', description: 'Post when users are active.', benefit: 'Higher engagement.' },
@@ -1287,9 +1318,9 @@ export const PRODUCTS: ProductItem[] = [
   {
     id: 'securedocs-vault',
     title: 'SecureDocs Vault',
-    tagline: 'Virtual Data Room.',
-    description: 'Share confidential documents securely with investors and partners.',
-    fullDescription: 'When raising capital or selling a company, you need to share sensitive PDF files. SecureDocs Vault lets you upload files and track exactly who opens them, which pages they read, and for how long. You can revoke access even after the file is downloaded.',
+    tagline: 'Safe document sharing for big deals.',
+    description: 'Share sensitive files with investors and know exactly who opens them.',
+    fullDescription: 'When you\'re raising money or closing a big deal, you can\'t just email sensitive PDFs. SecureDocs Vault lets you share your files securely and tracks exactly who opens them, which pages they read, and for how long. You can even lock them down after they\'ve been downloaded.',
     features: [
         { title: 'Dynamic Watermarking', description: 'User email on every page.', benefit: 'Prevent leaks.' },
         { title: 'Access Logs', description: 'See who viewed what.', benefit: 'Gauge interest.' },
@@ -1327,9 +1358,9 @@ export const PRODUCTS: ProductItem[] = [
   {
     id: 'meeting-ai-notetaker',
     title: 'MeetingAI Notetaker',
-    tagline: 'Never take minutes again.',
-    description: 'AI bot that joins your Zoom/Teams calls and writes summaries.',
-    fullDescription: 'Focus on the conversation, not the keyboard. MeetingAI joins your video calls, records the audio, transcribes it, and generates a structured summary with action items and deadlines. It then pushes these tasks directly to your project management tool.',
+    tagline: 'Focus on the call, we\'ll take the notes.',
+    description: 'An AI assistant that joins your Zoom and Teams calls to write summaries.',
+    fullDescription: 'Stop scrambling to take notes while you\'re trying to listen. MeetingAI joins your video calls, listens in, and writes a clear summary with action items and deadlines. It can even push those tasks directly to your team\'s to-do list so nothing gets missed.',
     features: [
         { title: 'Multi-Platform', description: 'Zoom, Teams, Meet.', benefit: 'Works everywhere.' },
         { title: 'Speaker ID', description: 'Knows who said what.', benefit: 'Clarity.' },
@@ -1370,14 +1401,14 @@ export const PRODUCTS: ProductItem[] = [
 export const SERVICE_CATEGORIES: ServiceCategory[] = [
   {
     id: 'messaging',
-    title: 'Enterprise Messaging',
-    description: 'Reach customers instantly on the channels they use every day.',
+    title: 'Messaging That Gets Through',
+    description: 'Reach your customers on the apps they actually use every day.',
     items: [
       {
         id: 'rcs-business-messaging',
         title: 'RCS Business Messaging',
-        description: 'The next generation of SMS with rich media.',
-        fullDescription: 'RCS (Rich Communication Services) is the modern upgrade to SMS. It allows you to send high-res images, videos, carousels, and interactive buttons directly to the native messaging app on Android and iOS (via Apple Business Messaging). No app download required for customers.',
+        description: 'Think of it as texting, but better.',
+        fullDescription: 'RCS is the modern upgrade for your text messages. It allows you to send high-quality images, videos, and interactive buttons right to a customer\'s default messaging app. No one needs to download anything extra; it just works, and it looks as good as a custom app.',
         features: [
             { title: 'Rich Media', description: 'Carousels and High-res video.', benefit: 'App-like experience.' },
             { title: 'Verified Profiles', description: 'Sender logo and verification.', benefit: '100% Trust.' },
@@ -1432,20 +1463,20 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
           { title: 'Volume Tier', price: '$0.008/msg', features: ['Direct Tier-1 Carrier Bind', 'Custom Sender ID', 'High Throughput', '24/7 Monitoring'] }
         ],
         roadmap: [
-          { step: '1', title: 'Route Testing', description: 'Running a test batch to ensure 100% arrival in your target country.' },
-          { step: '2', title: 'Sender ID Prep', description: 'Registering your Brand Name with carriers to avoid spam filters.' },
-          { step: '3', title: 'Campaign Blast', description: 'Scheduling and sending your message to your uploaded customer list.' },
-          { step: '4', title: 'Success Audit', description: 'Reviewing delivery logs and click-through rates in our dashboard.' }
+          { step: '1', title: 'The Test Run', description: 'We send a few test messages to make sure everything arrives exactly as it should in your target country.' },
+          { step: '2', title: 'Brand Setup', description: 'We register your brand name with the phone companies so you don\'t get marked as spam.' },
+          { step: '3', title: 'Sending the Blast', description: 'We schedule and send your message to your list, sitting back and watching the responses roll in.' },
+          { step: '4', title: 'Reviewing the Stats', description: 'We check the logs to see who opened what and how many people clicked your links.' }
         ],
         faqs: [
-          { question: 'What is a Tier-1 route?', answer: 'It is a direct connection to the mobile network, ensuring the highest possible deliverability and speed.' },
-          { question: 'Can I use my brand name?', answer: 'Yes, in most countries you can use an Alpha Sender ID (e.g., "MY BRAND") instead of a number.' },
-          { question: 'Is there a character limit?', answer: 'A standard SMS is 160 characters. Longer messages are split and rejoined by the phone.' },
-          { question: 'Do you provide phone lists?', answer: 'No, we only send to lists you have legally opted-in. We do not sell data.' },
-          { question: 'Can I receive replies?', answer: 'Yes, if you use a "Long Code" or "Short Code" number instead of an Alpha Name.' },
-          { question: 'How fast is delivery?', answer: 'Messages usually land on the phone within 3 to 10 seconds of clicking send.' },
-          { question: 'Do you support Unicode?', answer: 'Yes, we support Emojis and all languages including Arabic, Chinese, and Hindi.' },
-          { question: 'Can I schedule messages?', answer: 'Yes, you can schedule campaigns for any date and time in any timezone.' }
+          { question: 'What is a direct route?', answer: 'It\'s like a private fast lane for your texts. It goes straight to the phone company, so messages arrive in seconds.' },
+          { question: 'Can I use my own company name?', answer: 'Usually, yes! You can replace the phone number with your brand name, like "MYSTORE".' },
+          { question: 'How much space do I have?', answer: 'Each text is 160 characters. If you go over, we just combine them so it looks like one long message on the phone.' },
+          { question: 'Where do the phone numbers come from?', answer: 'We only send to people who have already said they want to hear from you. We don\'t ever sell phone lists.' },
+          { question: 'Can people reply to me?', answer: 'If you want them to, we can set up a "two-way" number so you can chat back and forth.' },
+          { question: 'Is it fast?', answer: 'Yes. Most people see their messages blink onto their screen within about 5 to 10 seconds.' },
+          { question: 'Can I use emojis?', answer: 'Definitely. We support all the standard emojis and special characters.' },
+          { question: 'Can I set them to send later?', answer: 'Yes, you can schedule your messages for next Tuesday at 9 AM, or whenever suits your customers best.' }
         ],
         metaTitle: 'Bulk SMS Gateway | Global Text Messaging API',
         metaDescription: 'Send bulk SMS campaigns instantly. Tier-1 direct routes for marketing and alerts.'
@@ -1470,20 +1501,20 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
             { title: 'Agent Pro', price: '$599/mo', features: ['Unlimited Agents', 'CRM Integration', '5,000 Conversations', 'Priority Verification'] }
         ],
         roadmap: [
-            { step: '1', title: 'Meta Verification', description: 'Submit your business documents to Meta for official brand approval.' },
-            { step: '2', title: 'Number Onboarding', description: 'Port your landline or mobile number to the official API stack.' },
-            { step: '3', title: 'Flow Design', description: 'Map out automated greeting, support, and sales chat journeys.' },
-            { step: '4', title: 'Integration', description: 'Connect the WhatsApp stream to your existing CRM or Helpdesk.' }
+            { step: '1', title: 'Meta Approval', description: 'We submit your business details to Meta (Facebook) to get your brand approved for the official API.' },
+            { step: '2', title: 'Hooking up your Number', description: 'We connect your existing mobile or landline number to the WhatsApp business stack.' },
+            { step: '3', title: 'Designing the Chat Flow', description: 'We map out a friendly greeting and help your bot learn how to answer common questions.' },
+            { step: '4', title: 'Going Live', description: 'We plug WhatsApp into your CRM so your team can start chatting with customers right away.' }
         ],
         faqs: [
-            { question: 'What is the Green Tick?', answer: 'It is the official verification badge from Meta that proves your business is authentic and trustworthy.' },
-            { question: 'Can multiple agents use one number?', answer: 'Yes! Unlike the standard WhatsApp app, our API allows hundreds of agents to log in and chat with customers from the same number simultaneously.' },
-            { question: 'Is it free to use?', answer: 'Meta charges per 24-hour conversation window. We provide a transparent dashboard to help you manage and optimize these costs.' },
-            { question: 'Do I need a new phone number?', answer: 'You can use an existing mobile or landline number, provided it can receive a voice call or SMS for initial verification.' },
-            { question: 'Can I send marketing broadcasts?', answer: 'Yes, you can send templates to thousands of customers at once, as long as they have opted in to receive messages from you.' },
-            { question: 'Is there a limit on messages?', answer: 'WhatsApp has "Messaging Tiers" (1K, 10K, 100K, Unlimited). You start at 1K and your limit increases as you maintain high quality scores.' },
-            { question: 'Can I integrate my CRM?', answer: 'Absolutely. We integrate with HubSpot, Salesforce, Zoho, and any custom CRM via our REST API.' },
-            { question: 'Are the messages encrypted?', answer: 'Yes, WhatsApp Business API messages are end-to-end encrypted, ensuring total privacy for you and your customers.' },
+            { question: 'What\'s the green tick?', answer: 'It\'s that little verification badge that tells customers your account is official and they can trust you.' },
+            { question: 'Can more than one person use the number?', answer: 'Yes! Unlike your normal phone, our system lets your whole team log in and answer messages from one business number.' },
+            { question: 'Does it cost money per message?', answer: 'WhatsApp charges based on a 24-hour "conversation window". We give you a clear dashboard to track exactly what you\'re spending.' },
+            { question: 'Can I use my current number?', answer: 'Most likely, yes. As long as it can receive a quick call or text for verification, we can move it over to the API.' },
+            { question: 'Can I send "Update" blasts?', answer: 'Yes, as long as people have agreed to hear from you, you can send notifications and promotions at scale.' },
+            { question: 'Is there a limit on how many messages I can send?', answer: 'WhatsApp increases your daily limit as you send good quality messages. You start at 1,000 and can go up from there.' },
+            { question: 'Can it connect to my CRM?', answer: 'Absolutely. We can plug it into HubSpot, Salesforce, or whatever system your team is already using.' },
+            { question: 'Is it private?', answer: 'Yes, all WhatsApp messages are encrypted. Only you and your customer can see the conversation.' },
             { question: 'Can I use chatbots?', answer: 'Yes, the API is designed specifically for automation. You can build complex AI-driven bots to handle support 24/7.' },
             { question: 'How long does approval take?', answer: 'Business verification usually takes 2-5 business days, but you can start testing in "Sandbox mode" immediately.' },
             { question: 'What happens if a customer blocks me?', answer: 'If your block rate increases, your quality score drops. We provide best practices to ensure your content is valuable and avoids being marked as spam.' },
@@ -1496,14 +1527,14 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   },
   {
     id: 'ai',
-    title: 'Artificial Intelligence',
-    description: 'Automate your business with smart, learning algorithms.',
+    title: 'AI Built for Your Business',
+    description: 'Smart tools and automation that understand your specific rules.',
     items: [
       {
         id: 'ai-customization',
         title: 'Custom AI Solutions',
-        description: 'Train AI on your own data.',
-        fullDescription: 'ChatGPT is great, but it doesn\'t know *your* business. We build "Private AI" that reads your manuals, emails, and product lists. It can then answer customer questions accurately or help your staff find information instantly.',
+        description: 'Train an AI on your own specific data.',
+        fullDescription: 'ChatGPT is a great start, but it doesn\'t know how your business works. We build "Private AI" that reads your specific manuals, documents, and emails. It can then answer customer questions accurately or help your team find info instantly without the risk of making things up.',
         features: [
             { title: 'Private LLM', description: 'Your data stays safe.', benefit: 'Security.' },
             { title: 'Auto-Training', description: 'Learns from new docs.', benefit: 'Always smart.' },
@@ -1541,14 +1572,14 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   },
   {
     id: 'digital',
-    title: 'Web & Digital',
-    description: 'Build your digital storefront.',
+    title: 'Websites & Digital Strategy',
+    description: 'Build your digital storefront, the right way.',
     items: [
         {
             id: 'web-development',
             title: 'Custom Web Development',
-            description: 'Fast, secure websites.',
-            fullDescription: 'Your website is your 24/7 salesperson. If it\'s slow, you lose money. We build blazing fast sites using modern tech (React/Next.js) that rank high on Google and convert visitors into buyers.',
+            description: 'Fast, secure websites that actually work.',
+            fullDescription: 'Your website should be your hardest-working employee. If it\'s slow or confusing, you\'re losing leads. We build blazing fast sites using modern tech like React and Next.js that rank high on Google and actually convince people to buy.',
             features: [
                 { title: 'SEO Core', description: 'Built to rank.', benefit: 'Free traffic.' },
                 { title: 'Mobile First', description: 'Looks great on phones.', benefit: 'Better UX.' },
@@ -1624,14 +1655,14 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   },
   {
     id: 'cloud',
-    title: 'Cloud & Infrastructure',
-    description: 'Scalable, secure, and managed cloud environments.',
+    title: 'Cloud & Tech Setup',
+    description: 'Secure, scalable, and fully managed cloud setups.',
     items: [
         {
             id: 'managed-aws',
-            title: 'Managed AWS Hosting',
-            description: 'Expert management of your AWS environment.',
-            fullDescription: 'AWS is powerful but complex. Our certified engineers design, deploy, and manage your cloud infrastructure. We optimize for cost, security, and performance so you don\'t have to hire an internal DevOps team.',
+            title: 'Managed AWS & Cloud',
+            description: 'We handle the servers, you handle the business.',
+            fullDescription: 'AWS is powerful, but it can be a nightmare to manage alone. Our engineers design, build, and watch over your cloud setup 24/7. We focus on keeping your costs down and your security tight so you never have to worry about your site crashing from a traffic spike.',
             features: [
                 { title: 'Cost Optimization', description: 'Reduce bills by 30%.', benefit: 'Save money.' },
                 { title: 'Security Hardening', description: 'Firewalls & IAM.', benefit: 'Protect data.' },
@@ -1652,16 +1683,15 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
               { step: '3', title: 'Hardening', description: 'Implementing Zero-Trust IAM roles and advanced firewalls.' },
               { step: '4', title: 'Managed Ops', description: 'Handing over the keys to our 24/7 cloud monitoring and support team.' }
             ],
-            faqs: [
-              { question: 'Do I own the account?', answer: 'Yes, you retain full ownership. We just manage it via secure IAM cross-account access.' },
-              { question: 'Can you lower my bill?', answer: 'We typically save clients 20-40% on their cloud spend through proper architecture.' },
-              { question: 'Do you support Azure?', answer: 'Yes, we provide managed services for AWS, Microsoft Azure, and Google Cloud.' },
-              { question: 'What if a server fails?', answer: 'Our automated "Self-Healing" logic detects the failure and launches a replacement in seconds.' },
-              { question: 'Is it secure?', answer: 'We implement military-grade encryption and follow the AWS Well-Architected Framework.' },
-              { question: 'Do you handle migrations?', answer: 'Yes, we can migrate you from on-premise or other clouds to AWS with zero downtime.' },
-              { question: 'What is your SLA?', answer: 'We offer up to a 99.99% uptime guarantee on our managed infrastructure plans.' },
-              { question: 'Do you support Kubernetes?', answer: 'Yes, we are experts in EKS, ECS, and standard Docker deployments.' }
-            ],
+        faqs: [
+          { question: 'Do I still own the AWS account?', answer: 'Yes, it\'s 100% yours. We just log in with limited access to keep things running smoothly.' },
+          { question: 'Can you actually make my bill smaller?', answer: 'Almost always. We usually save our clients between 20% and 40% just by cleaning up wasted resources.' },
+          { question: 'Do you work with Azure or Google Cloud too?', answer: 'Yes, we\'re experts in AWS, Azure, and Google Cloud. We can manage whichever one you prefer.' },
+          { question: 'What happens if a server dies in the middle of the night?', answer: 'Our system detects it instantly and launches a fresh one before anyone even notices a glitch.' },
+          { question: 'Is my data safe with you?', answer: 'We use the highest security standards possible and follow the official "Best Practices" for whichever cloud you use.' },
+          { question: 'Can you move us from our old office servers?', answer: 'Yes, we handle the whole move so you don\'t have any downtime while moving to the cloud.' },
+          { question: 'Do you handle Kubernetes?', answer: 'Yes, we love Docker and Kubernetes. We can help you scale your apps without the usual headaches.' }
+        ],
             metaTitle: 'Managed AWS Services | Cloud Infrastructure Support',
             metaDescription: 'Expert AWS management. We optimize your cloud infrastructure for cost, security, and performance.'
         },
@@ -1707,14 +1737,14 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   },
   {
     id: 'mobile',
-    title: 'Mobile Solutions',
-    description: 'Native and cross-platform mobile apps.',
+    title: 'Apps for Every Screen',
+    description: 'Custom mobile apps for iPhone and Android.',
     items: [
         {
             id: 'ios-development',
             title: 'iOS App Development',
-            description: 'Premium apps for iPhone & iPad.',
-            fullDescription: 'Capture the premium market with a stunning iOS app. We build native Swift applications that offer the smoothest performance and best user experience on Apple devices.',
+            description: 'Stunning apps for iPhone and iPad.',
+            fullDescription: 'If you want to reach the most valuable users, you need a top-tier iOS app. We build native Swift applications that are smooth, fast, and feel exactly like an Apple product should. No clunky interfaces, just pure performance.',
             features: [
                 { title: 'Swift UI', description: 'Modern interface.', benefit: 'Beautiful UX.' },
                 { title: 'App Store Opt', description: 'Ranking help.', benefit: 'More downloads.' },
@@ -1790,14 +1820,14 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   },
   {
     id: 'marketing',
-    title: 'Digital Growth',
-    description: 'Data-driven marketing strategies.',
+    title: 'Digital Growth & Strategy',
+    description: 'Real marketing that actually brings in customers.',
     items: [
         {
             id: 'ppc-management',
-            title: 'PPC & Ad Management',
-            description: 'Google & Facebook Ads that convert.',
-            fullDescription: 'Stop wasting money on clicks that don\'t convert. Our certified ad specialists manage your Google and Meta ad spend to maximize ROI. We continually A/B test creatives and audiences to lower your Cost Per Acquisition.',
+            title: 'Ads That Actually Work',
+            description: 'Google and Meta ads managed by experts.',
+            fullDescription: 'Stop throwing money at clicks that don\'t buy anything. Our ad specialists manage your budget to make sure you get the best return possible. We constantly test new ads and audiences so your cost-per-sale keeps going down, not up.',
             features: [
                 { title: 'Audience Targeting', description: 'Find buyers.', benefit: 'Higher ROI.' },
                 { title: 'Creative Testing', description: 'A/B tests.', benefit: 'Better ads.' },
@@ -1873,14 +1903,14 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   },
   {
     id: 'cybersecurity',
-    title: 'Cybersecurity',
-    description: 'Protect your business from digital threats.',
+    title: 'Cybersecurity & Safety',
+    description: 'Protect your business from hackers and leaks.',
     items: [
         {
             id: 'penetration-testing',
-            title: 'Penetration Testing',
-            description: 'Ethical hacking to find weaknesses.',
-            fullDescription: 'Our certified ethical hackers launch controlled attacks against your network and applications to identify vulnerabilities before malicious actors do. You receive a detailed report with remediation steps.',
+            title: 'Testing Your Defenses',
+            description: 'We try to hack you (nicely) before the bad guys do.',
+            fullDescription: 'Our security experts launch controlled, "nice" attacks on your systems to find the holes before a real hacker does. You get a clear report on what\'s weak and exactly how we\'re going to help you fix it.',
             features: [
                 { title: 'Web App Testing', description: 'OWASP Top 10.', benefit: 'Secure apps.' },
                 { title: 'Network Scan', description: 'Find open ports.', benefit: 'Hardened network.' },
@@ -1901,16 +1931,15 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
               { step: '3', title: 'Manual Exploitation', description: 'Our human hackers attempt to bypass security safely to prove the risk.' },
               { step: '4', title: 'Remediation', description: 'Providing your dev team with a clear plan to fix every hole we found.' }
             ],
-            faqs: [
-              { question: 'Is it safe?', answer: 'Yes, we perform tests in a controlled manner to identify risks without causing downtime or data loss.' },
-              { question: 'How often should we test?', answer: 'We recommend a deep manual pentest at least once a year, or after every major software release.' },
-              { question: 'Do you provide a cert?', answer: 'We provide a detailed "Letter of Attestation" that you can share with partners to prove your security.' },
-              { question: 'What is OWSAP?', answer: 'It is the global standard for web security. We test for all 10 of the most common and dangerous vulnerabilities.' },
-              { question: 'Can you test my staff?', answer: 'Yes, we perform "Phishing Simulations" to see if your employees will click on dangerous links.' },
-              { question: 'What do you need from us?', answer: 'Just the URLs or IP addresses of the targets. You don\'t need to share your source code.' },
-              { question: 'Is it confidential?', answer: 'Absolutely. We sign strict NDAs before any testing begins.' },
-              { question: 'What if you find a bug?', answer: 'We report it instantly if it is critical, and include all findings in the final report.' }
-            ],
+        faqs: [
+          { question: 'Is this safe for our live systems?', answer: 'Yes. We do everything carefully so we find the holes without actually breaking your business or losing data.' },
+          { question: 'How often should we do this?', answer: 'We recommend a deep test at least once a year, or whenever you make a big change to your software.' },
+          { question: 'Do we get some kind of certificate?', answer: 'Yes, we give you an official letter showing that you\'ve been tested, which is great for showing to big clients.' },
+          { question: 'Can you test our employees too?', answer: 'Yes, we can run fake "phishing" tests to see if your team knows how to spot a dangerous email.' },
+          { question: 'What do you need from us to start?', answer: 'Just the link to your site or your server addresses. You don\'t need to give us your secret code or anything.' },
+          { question: 'Is this whole process private?', answer: 'Absolutely. We sign an NDA before we even look at a single file.' },
+          { question: 'What if you find something really bad?', answer: 'We tell you the second we find it, and then we help your team figure out the best way to patch it up.' }
+        ],
             metaTitle: 'Penetration Testing Services | Ethical Hacking',
             metaDescription: 'Identify security vulnerabilities with professional penetration testing. Web, network, and mobile app security audits.'
         },
@@ -1956,14 +1985,14 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   },
   {
     id: 'analytics',
-    title: 'Data & Analytics',
-    description: 'Turn raw data into actionable insights.',
+    title: 'Data & Real Insights',
+    description: 'Turn your boring spreadsheets into useful info.',
     items: [
         {
             id: 'bi-dashboards',
-            title: 'BI Dashboards',
-            description: 'Visualize your KPIs in real-time.',
-            fullDescription: 'Stop drowning in spreadsheets. We build interactive dashboards using PowerBI, Tableau, or custom React apps that pull data from your sales, marketing, and operations tools into one view.',
+            title: 'Live Business Dashboards',
+            description: 'See your sales and progress in real-time.',
+            fullDescription: 'Stop drowning in Excel files. We build interactive dashboards that pull data from your site, ads, and sales team into one simple view. You\'ll finally be able to see what\'s actually working in your business in just one glance.',
             features: [
                 { title: 'Real-time Data', description: 'Live updates.', benefit: 'Fast decisions.' },
                 { title: 'Custom Metrics', description: 'Your KPIs.', benefit: 'Relevant tracking.' },
@@ -2039,14 +2068,14 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   },
   {
     id: 'blockchain',
-    title: 'Blockchain',
-    description: 'Web3 and decentralized applications.',
+    title: 'Web3 & Blockchain',
+    description: 'Smart contracts and decentralized apps that work.',
     items: [
         {
             id: 'smart-contracts',
-            title: 'Smart Contract Dev',
-            description: 'Secure contracts for Ethereum & Solana.',
-            fullDescription: 'Automate agreements without intermediaries. We write, test, and deploy secure smart contracts for DeFi, NFTs, and supply chain tracking. Our code is audited for security vulnerabilities.',
+            title: 'Secure Smart Contracts',
+            description: 'Codes that run themselves securely on the chain.',
+            fullDescription: 'Automate your deals without needing a middleman. We write and audit secure smart contracts for everything from finance to supply chain tracking. We make sure the code is bulletproof so you don\'t have to worry about hacks.',
             features: [
                 { title: 'Solidity / Rust', description: 'Expert coding.', benefit: 'Performance.' },
                 { title: 'Security Audit', description: 'Prevent hacks.', benefit: 'Safety.' },
