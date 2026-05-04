@@ -141,39 +141,39 @@ const Home: React.FC = () => {
         .delay-100 { animation-delay: 0.1s; }
         .delay-200 { animation-delay: 0.2s; }
         .delay-300 { animation-delay: 0.3s; }
-        .delay-400 { animation-delay: 0.4s; }
       `}</style>
       
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center bg-slate-900 overflow-hidden transition-colors duration-1000">
+      <section className="relative min-h-[90vh] flex items-center bg-slate-950 overflow-hidden transition-colors duration-1000">
         {/* Abstract Background Shapes */}
-        <div className={`absolute top-0 right-0 w-[800px] h-[800px] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 transition-colors duration-1000 ${heroIndex === 0 ? 'bg-indigo-600/20' : heroIndex === 1 ? 'bg-blue-600/20' : 'bg-fuchsia-600/20'}`}></div>
-        <div className={`absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3 transition-colors duration-1000 ${heroIndex === 0 ? 'bg-purple-600/20' : heroIndex === 1 ? 'bg-teal-600/20' : 'bg-orange-600/20'}`}></div>
-        {/* Gradient Overlay for Depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-950/50 to-slate-900 opacity-90"></div>
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+        <div className={`absolute top-0 right-0 w-[800px] h-[800px] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 transition-all duration-1000 ${heroIndex === 0 ? 'bg-brand-600/20' : heroIndex === 1 ? 'bg-emerald-600/20' : 'bg-purple-600/20'}`}></div>
+        <div className={`absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3 transition-all duration-1000 ${heroIndex === 0 ? 'bg-brand-500/10' : heroIndex === 1 ? 'bg-teal-500/10' : 'bg-rose-500/10'}`}></div>
         
-        <div className="container mx-auto px-4 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none"></div>
+        
+        <div className="container mx-auto px-4 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
           
           {/* Dynamic Content Left */}
           <div className="text-center lg:text-left" key={currentHero.id}>
-            <div className={`inline-block border rounded-full px-4 py-1.5 text-sm font-semibold mb-6 animate-fade-in-up shadow-[0_0_15px_rgba(255,255,255,0.1)] bg-white/5 border-white/20 text-${currentHero.accentColor}-300`}>
-              {currentHero.tag}
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-8 animate-fade-in-up">
+              <span className="flex h-2 w-2 rounded-full bg-brand-500 animate-pulse"></span>
+              <span className="text-slate-300 text-xs font-black uppercase tracking-widest leading-none mt-0.5">{currentHero.tag}</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6 animate-fade-in-up delay-100">
+            <h1 className="text-6xl md:text-8xl font-black text-white leading-[0.9] mb-8 animate-fade-in-up delay-100 tracking-tighter">
               {currentHero.titlePrefix} <br/>
               <span className={`text-transparent bg-clip-text bg-gradient-to-r ${currentHero.gradient}`}>
                 {currentHero.titleHighlight}
               </span>
             </h1>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0 animate-fade-in-up delay-200 font-light leading-relaxed">
+            <p className="text-xl text-slate-400 mb-10 max-w-xl mx-auto lg:mx-0 animate-fade-in-up delay-200 font-medium leading-relaxed">
               {currentHero.description}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up delay-300">
-              <NavLink to={currentHero.ctaLink} className={`bg-${currentHero.accentColor}-600 text-white font-bold py-4 px-8 rounded-full hover:bg-${currentHero.accentColor}-700 transition-all shadow-lg hover:shadow-${currentHero.accentColor}-500/50 transform hover:-translate-y-1 border border-transparent`}>
+            <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start animate-fade-in-up delay-300">
+              <NavLink to={currentHero.ctaLink} className="bg-brand-600 text-white font-black py-5 px-10 rounded-2xl hover:bg-brand-500 transition-all shadow-2xl shadow-brand-600/20 transform hover:-translate-y-1 uppercase tracking-tighter text-sm">
                 {currentHero.ctaText}
               </NavLink>
-              <NavLink to={currentHero.secondaryCtaLink} className="bg-transparent border border-slate-600 text-white font-bold py-4 px-8 rounded-full hover:bg-slate-800 transition-all hover:border-slate-500">
+              <NavLink to={currentHero.secondaryCtaLink} className="bg-white/5 backdrop-blur-md border border-white/10 text-white font-black py-5 px-10 rounded-2xl hover:bg-white/10 transition-all uppercase tracking-tighter text-sm">
                 {currentHero.secondaryCtaText}
               </NavLink>
             </div>
@@ -181,28 +181,22 @@ const Home: React.FC = () => {
           
           {/* Visual Right */}
           <div className="relative hidden lg:block animate-float">
-             <div className="relative z-10 bg-gradient-to-tr from-slate-800 to-slate-900 p-6 rounded-3xl border border-slate-700 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500 overflow-hidden">
-                <div className="absolute -top-10 -right-10 bg-white p-4 rounded-2xl shadow-xl animate-bounce" style={{animationDuration: '3s'}}>
-                   <div className="text-4xl" key={currentHero.icon}>{currentHero.icon}</div>
+             <div className="relative z-10 glass-card p-4 rounded-[2rem] border-white/10 bg-white/5 overflow-hidden group">
+                <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-xl p-3 rounded-2xl border border-white/10 z-20">
+                   <div className="text-5xl" key={currentHero.icon}>{currentHero.icon}</div>
                 </div>
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Dashboard Analytics UI" className="rounded-xl shadow-inner w-full object-cover opacity-80 hover:opacity-100 transition-opacity" />
-                <div className="mt-4 flex gap-4">
-                   <div className="h-2 bg-slate-700 rounded w-1/3"></div>
-                   <div className="h-2 bg-slate-700 rounded w-1/4"></div>
-                </div>
-                <div className="mt-2 h-2 bg-slate-700 rounded w-1/2"></div>
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Platform Intelligence" className="rounded-2xl w-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700" />
              </div>
-             {/* Decorative Elements behind */}
-             <div className={`absolute top-10 right-10 w-full h-full border-2 rounded-3xl -z-10 transform translate-x-4 translate-y-4 transition-colors duration-1000 border-${currentHero.accentColor}-500/30`}></div>
+             <div className="absolute -inset-4 bg-brand-600/20 rounded-[2.5rem] blur-2xl -z-10 group-hover:bg-brand-600/40 transition-colors"></div>
           </div>
 
           {/* Carousel Indicators */}
-          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex gap-2">
+          <div className="absolute bottom-12 left-1/2 lg:left-[4px] transform -translate-x-1/2 lg:translate-x-0 flex gap-3">
             {HERO_VARIANTS.map((variant, idx) => (
                 <button 
                     key={variant.id}
                     onClick={() => setHeroIndex(idx)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${heroIndex === idx ? `bg-${currentHero.accentColor}-500 w-8` : 'bg-slate-600 hover:bg-slate-500'}`}
+                    className={`h-1.5 transition-all duration-500 rounded-full ${heroIndex === idx ? `bg-brand-500 w-12` : 'bg-white/20 w-6 hover:bg-white/40'}`}
                     aria-label={`Go to slide ${idx + 1}`}
                 />
             ))}
@@ -211,139 +205,150 @@ const Home: React.FC = () => {
       </section>
 
       {/* Simplified "What We Do" Section */}
-      <section className="py-20 bg-white border-b border-slate-100">
-          <div className="container mx-auto px-4 text-center">
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">Simple Solutions. Big Results.</h2>
-              <p className="text-slate-600 max-w-2xl mx-auto mb-12">We strip away the complexity of technology so you can focus on growing your business.</p>
-              <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                  <div className="p-8 bg-blue-50 rounded-3xl border border-blue-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-4xl mb-6 mx-auto">💬</div>
-                      <h3 className="font-bold text-xl mb-3 text-blue-900">Reach Everyone</h3>
-                      <p className="text-slate-600 mb-4">Don't rely on just email. We set up <strong>Bulk SMS & WhatsApp</strong> systems so your customers actually see your messages.</p>
-                      <div className="flex flex-wrap justify-center gap-2">
-                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-1 rounded-md text-blue-600 border border-blue-100">Bulk SMS</span>
-                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-1 rounded-md text-blue-600 border border-blue-100">WhatsApp API</span>
-                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-1 rounded-md text-blue-600 border border-blue-100">Voice AI</span>
-                      </div>
+      <section className="section-container">
+          <div className="text-center mb-16">
+              <h2 className="text-4xl font-extrabold text-slate-950 mb-4">Simple Solutions. Big Results.</h2>
+              <p className="text-slate-600 max-w-2xl mx-auto text-lg">We strip away the complexity of technology so you can focus on growing your business with zero friction.</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              <div className="glass-card p-10 group">
+                  <div className="feature-icon-wrapper bg-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white">💬</div>
+                  <h3 className="font-bold text-2xl mb-4 text-slate-950 group-hover:text-brand-600 transition-colors">Reach Everyone</h3>
+                  <p className="text-slate-600 mb-6 leading-relaxed">Don't rely on just email. We set up <strong>Bulk SMS & WhatsApp</strong> systems so your customers actually see and engage with your messages.</p>
+                  <div className="flex flex-wrap gap-2">
+                    {['Bulk SMS', 'WhatsApp API', 'Voice AI'].map(tag => (
+                      <span key={tag} className="text-[10px] font-bold uppercase tracking-wider bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 border border-slate-200">{tag}</span>
+                    ))}
                   </div>
-                  <div className="p-8 bg-purple-50 rounded-3xl border border-purple-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                      <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center text-4xl mb-6 mx-auto">🧠</div>
-                      <h3 className="font-bold text-xl mb-3 text-purple-900">Work Smarter (AI)</h3>
-                      <p className="text-slate-600 mb-4">Hire digital workers. Our <strong>AI Chatbots</strong> handle support and sales 24/7, saving you time and money.</p>
-                      <div className="flex flex-wrap justify-center gap-2">
-                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-1 rounded-md text-purple-600 border border-purple-100">Chatbots</span>
-                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-1 rounded-md text-purple-600 border border-purple-100">Automation</span>
-                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-1 rounded-md text-purple-600 border border-purple-100">Gemini AI</span>
-                      </div>
+              </div>
+              <div className="glass-card p-10 group">
+                  <div className="feature-icon-wrapper bg-purple-100 text-purple-600 group-hover:bg-purple-600 group-hover:text-white">🧠</div>
+                  <h3 className="font-bold text-2xl mb-4 text-slate-950 group-hover:text-brand-600 transition-colors">Work Smarter</h3>
+                  <p className="text-slate-600 mb-6 leading-relaxed">Hire digital workers. Our <strong>AI Chatbots</strong> handle support and sales 24/7, saving you time and dramatically reducing operational costs.</p>
+                  <div className="flex flex-wrap gap-2">
+                    {['Chatbots', 'Automation', 'Gemini AI'].map(tag => (
+                      <span key={tag} className="text-[10px] font-bold uppercase tracking-wider bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 border border-slate-200">{tag}</span>
+                    ))}
                   </div>
-                  <div className="p-8 bg-orange-50 rounded-3xl border border-orange-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                      <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center text-4xl mb-6 mx-auto">🚀</div>
-                      <h3 className="font-bold text-xl mb-3 text-orange-900">Rank Faster</h3>
-                      <p className="text-slate-600 mb-4">Get found on Google. We build <strong>High-Speed Websites</strong> optimized for SEO so you climb the rankings quickly.</p>
-                      <div className="flex flex-wrap justify-center gap-2">
-                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-1 rounded-md text-orange-600 border border-orange-100">Web Dev</span>
-                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-1 rounded-md text-orange-600 border border-orange-100">SEO</span>
-                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white px-2 py-1 rounded-md text-orange-600 border border-orange-100">Cloud</span>
-                      </div>
+              </div>
+              <div className="glass-card p-10 group">
+                  <div className="feature-icon-wrapper bg-orange-100 text-orange-600 group-hover:bg-orange-600 group-hover:text-white">🚀</div>
+                  <h3 className="font-bold text-2xl mb-4 text-slate-950 group-hover:text-brand-600 transition-colors">Rank Faster</h3>
+                  <p className="text-slate-600 mb-6 leading-relaxed">Get found on Google with authority. We build <strong>High-Performance Websites</strong> optimized for SEO to climb the rankings quickly.</p>
+                  <div className="flex flex-wrap gap-2">
+                    {['Web Dev', 'SEO', 'Cloud Native'].map(tag => (
+                      <span key={tag} className="text-[10px] font-bold uppercase tracking-wider bg-slate-100 px-2.5 py-1 rounded-md text-slate-600 border border-slate-200">{tag}</span>
+                    ))}
                   </div>
               </div>
           </div>
       </section>
 
       {/* Social Platforms / Connect Everywhere Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-500/10 blur-[100px] rounded-full"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <span className="text-indigo-600 font-bold uppercase tracking-wider text-sm">Omnichannel Communication</span>
-            <h2 className="text-4xl font-bold text-slate-900 mt-2">Connect Everywhere</h2>
-            <p className="text-slate-600 mt-4 max-w-2xl mx-auto">
-              Reach your customers on the platforms they use daily. Our unified API infrastructure ensures your message gets delivered.
+            <span className="text-brand-400 font-bold uppercase tracking-widest text-xs">Omnichannel Communication</span>
+            <h2 className="text-4xl md:text-5xl font-black text-white mt-4 tracking-tight">Connect Everywhere</h2>
+            <p className="text-slate-400 mt-6 max-w-2xl mx-auto text-lg font-light leading-relaxed">
+              Reach your customers on the platforms they use daily. Our unified API infrastructure ensures your message gets delivered with 99.9% reliability.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* WhatsApp */}
-            <div className="group bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:border-green-400 hover:shadow-xl hover:shadow-green-100 transition-all duration-300 text-center">
-              <div className="w-16 h-16 mx-auto bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="group bg-white/5 backdrop-blur-xl p-10 rounded-3xl border border-white/10 hover:border-brand-500/50 hover:bg-white/10 transition-all duration-500 text-center">
+              <div className="w-16 h-16 mx-auto bg-green-500/20 text-green-400 rounded-2xl flex items-center justify-center mb-8 group-hover:rotate-6 transition-transform">
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">WhatsApp API</h3>
-              <p className="text-sm text-slate-600">Green tick verification & automated chatbots.</p>
+              <h3 className="text-2xl font-bold text-white mb-3">WhatsApp API</h3>
+              <p className="text-slate-400 font-light text-sm">Green tick verification & enterprise chatbot workflows.</p>
             </div>
 
             {/* Telegram */}
-            <div className="group bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-100 transition-all duration-300 text-center">
-              <div className="w-16 h-16 mx-auto bg-blue-100 text-blue-500 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="group bg-white/5 backdrop-blur-xl p-10 rounded-3xl border border-white/10 hover:border-brand-500/50 hover:bg-white/10 transition-all duration-500 text-center">
+              <div className="w-16 h-16 mx-auto bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center mb-8 group-hover:rotate-6 transition-transform">
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M24 23.991c-2.42 0-21.785-5.926-21.785-5.926 0 0-4.092-1.353 1.21-3.66 5.302-2.307 19.332-8.196 19.332-8.196s1.612-.768 1.228 1.916c-.384 2.684-2.208 15.866-2.208 15.866zM1.94 17.653s16.712 5.018 19.335 5.568c0 0-5.756-3.766-7.839-5.306-2.083-1.54-7.892-5.465-8.414-5.362-.522.102 6.014 5.378 5.768 5.706-.246.327-4.225-2.858-4.225-2.858s-2.023 1.378-4.625 2.252z"/></svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Telegram</h3>
-              <p className="text-sm text-slate-600">Unlimited channels & custom bot automation.</p>
+              <h3 className="text-2xl font-bold text-white mb-3">Telegram</h3>
+              <p className="text-slate-400 font-light text-sm">Massive channels & secure crypto-ready bot automation.</p>
             </div>
 
             {/* RCS/SMS */}
-            <div className="group bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:border-indigo-400 hover:shadow-xl hover:shadow-indigo-100 transition-all duration-300 text-center">
-              <div className="w-16 h-16 mx-auto bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="group bg-white/5 backdrop-blur-xl p-10 rounded-3xl border border-white/10 hover:border-brand-500/50 hover:bg-white/10 transition-all duration-500 text-center">
+              <div className="w-16 h-16 mx-auto bg-brand-500/20 text-brand-400 rounded-2xl flex items-center justify-center mb-8 group-hover:rotate-6 transition-transform">
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">SMS & RCS</h3>
-              <p className="text-sm text-slate-600">Rich media messaging with 98% open rates.</p>
+              <h3 className="text-2xl font-bold text-white mb-3">SMS & RCS</h3>
+              <p className="text-slate-400 font-light text-sm">Interactive rich media messaging with 98% open rates.</p>
             </div>
 
             {/* Voice */}
-            <div className="group bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:border-purple-400 hover:shadow-xl hover:shadow-purple-100 transition-all duration-300 text-center">
-              <div className="w-16 h-16 mx-auto bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="group bg-white/5 backdrop-blur-xl p-10 rounded-3xl border border-white/10 hover:border-brand-500/50 hover:bg-white/10 transition-all duration-500 text-center">
+              <div className="w-16 h-16 mx-auto bg-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center mb-8 group-hover:rotate-6 transition-transform">
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Voice AI</h3>
-              <p className="text-sm text-slate-600">IVR, Broadcasting, and Human-like Voice Bots.</p>
+              <h3 className="text-2xl font-bold text-white mb-3">Voice AI</h3>
+              <p className="text-slate-400 font-light text-sm">Multilingual IVR and Human-like outbound Voice Assistants.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Industries We Serve */}
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900">Industries We Serve</h2>
-            <p className="text-slate-600 mt-2">Tailored solutions for every sector.</p>
-          </div>
-          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {industries.map((ind, i) => (
-              <div key={i} className="bg-white p-6 rounded-xl border border-slate-200 text-center hover:shadow-md transition-shadow">
-                <div className={`text-4xl mb-4 w-12 h-12 mx-auto rounded-full flex items-center justify-center ${ind.color ? ind.color : 'text-slate-600 bg-slate-50'}`}>
-                    {ind.icon}
-                </div>
-                <h3 className="font-bold text-slate-900 text-sm mb-1">{ind.title}</h3>
-                <p className="text-xs text-slate-500">{ind.desc}</p>
+      {/* Industries Cluster Section */}
+      <section className="section-container">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+              <div className="max-w-2xl">
+                <span className="text-brand-600 font-bold uppercase tracking-widest text-xs">Industry Clusters</span>
+                <h2 className="text-4xl md:text-5xl font-black text-slate-950 mt-4 tracking-tighter">Strategic Deep-Dives</h2>
+                <p className="text-slate-600 mt-6 text-lg font-light leading-relaxed">
+                  We don't just build software. We engineer domain-specific ecosystems that solve the unique logistical and communicative friction of your industry.
+                </p>
               </div>
-            ))}
+              <NavLink to="/industries" className="group flex items-center gap-3 text-slate-950 font-black uppercase text-xs tracking-widest hover:text-brand-600 transition-colors">
+                Explore Clusters
+                <div className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition-all duration-300">→</div>
+              </NavLink>
           </div>
-        </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {industries.map((ind, i) => (
+                  <NavLink key={i} to={`/industry/${ind.id}`} className="glass-card p-10 group overflow-hidden relative">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 -mr-16 -mt-16 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+                      <div className={`w-16 h-16 rounded-2xl bg-white shadow-xl flex items-center justify-center text-3xl mb-8 border border-slate-100 group-hover:-rotate-6 transition-transform relative z-10`}>
+                        {ind.icon}
+                      </div>
+                      <h3 className="text-2xl font-black mb-4 tracking-tight text-slate-950 relative z-10">{ind.title}</h3>
+                      <p className="text-slate-500 font-medium text-sm leading-relaxed mb-6 group-hover:text-slate-600 transition-colors relative z-10">{ind.desc}</p>
+                      <div className="inline-flex items-center text-xs font-black uppercase tracking-widest text-brand-600 relative z-10">
+                        Case Study <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                      </div>
+                  </NavLink>
+              ))}
+          </div>
       </section>
 
       {/* Digital Dictionary / Learn Section */}
-      <section className="py-24 bg-white border-t border-slate-100 overflow-hidden">
-          <div className="container mx-auto px-4">
-              <div className="text-center mb-16">
-                  <span className="text-indigo-600 font-bold uppercase tracking-wider text-sm">Knowledge Hub</span>
-                  <h2 className="text-4xl font-bold text-slate-900 mt-2">Tech Terms Translated</h2>
-                  <p className="text-slate-600 mt-4 text-lg">Confused by jargon? Here is what we mean in plain English.</p>
-              </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {dictionaryTerms.map((item, i) => (
-                      <div key={i} className={`p-8 rounded-3xl border transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group ${item.color} flex flex-col h-full`}>
-                          <div className="text-5xl mb-6">{item.icon}</div>
-                          <h3 className="text-2xl font-bold mb-4">{item.term}</h3>
-                          <p className="opacity-80 leading-relaxed font-medium flex-grow">{item.definition}</p>
-                      </div>
-                  ))}
-                  {/* Fun Fact Card */}
-                  <div className="p-8 rounded-3xl bg-slate-900 text-white flex flex-col justify-center items-center text-center shadow-2xl transform rotate-1 hover:rotate-0 transition-transform h-full">
-                      <div className="text-5xl mb-4">💡</div>
-                      <h3 className="text-2xl font-bold mb-4">Did You Know?</h3>
-                      <p className="opacity-80">90% of text messages are read within 3 minutes. That's faster than any email!</p>
+      <section className="section-container bg-slate-100/50 border-y border-slate-200">
+          <div className="text-center mb-20">
+              <span className="text-brand-600 font-bold uppercase tracking-widest text-xs">Knowledge Hub</span>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-950 mt-4 tracking-tighter">Digital Literacy</h2>
+              <p className="text-slate-600 mt-6 text-lg max-w-2xl mx-auto font-light">Demystifying the future. We translate complex tech into clear, actionable business value.</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+              {dictionaryTerms.map((item, i) => (
+                  <div key={i} className={`p-10 rounded-[2.5rem] border transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group ${item.color} flex flex-col h-full shadow-sm`}>
+                      <div className="text-6xl mb-8 group-hover:scale-110 transition-transform origin-left">{item.icon}</div>
+                      <h3 className="text-3xl font-black mb-4 tracking-tight">{item.term}</h3>
+                      <p className="opacity-80 leading-relaxed text-lg font-medium flex-grow border-t pt-6 border-current/10">{item.definition}</p>
                   </div>
+              ))}
+              {/* Fun Fact Card */}
+              <div className="p-10 rounded-[2.5rem] bg-slate-950 text-white flex flex-col justify-center items-start text-left shadow-2xl relative overflow-hidden group h-full">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-brand-500/20 rounded-full blur-3xl group-hover:scale-150 transition-transform"></div>
+                  <div className="text-6xl mb-6">💡</div>
+                  <h3 className="text-3xl font-black mb-4 tracking-tight text-brand-400">Pro Tip</h3>
+                  <p className="opacity-90 text-lg leading-relaxed font-light">90% of text messages are read within <strong>3 minutes</strong>. Capture attention where it's already focused.</p>
               </div>
           </div>
       </section>
@@ -365,65 +370,66 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Impact Stats */}
-      <section className="py-16 bg-indigo-900 border-y border-indigo-800 text-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-indigo-800">
-            <div className="p-4">
-              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-2">98%</div>
-              <div className="text-sm text-indigo-200 uppercase tracking-wide">Client Retention</div>
-            </div>
-            <div className="p-4">
-              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-2">500M+</div>
-              <div className="text-sm text-indigo-200 uppercase tracking-wide">Messages Sent</div>
-            </div>
-            <div className="p-4">
-              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-2">200+</div>
-              <div className="text-sm text-indigo-200 uppercase tracking-wide">Global Countries</div>
-            </div>
-            <div className="p-4">
-              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-2">24/7</div>
-              <div className="text-sm text-indigo-200 uppercase tracking-wide">Expert Support</div>
-            </div>
+      {/* Impact Stats Section */}
+      <section className="section-container">
+          <div className="bg-brand-600 rounded-[3rem] p-12 md:p-20 text-white relative overflow-hidden shadow-2xl shadow-brand-500/20">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
+              <div className="relative z-10 grid md:grid-cols-4 gap-12 text-center">
+                  <div>
+                      <div className="text-5xl font-black mb-2 tracking-tighter">1M+</div>
+                      <div className="text-brand-100 text-[10px] font-black uppercase tracking-widest">Messages Processed</div>
+                  </div>
+                  <div>
+                      <div className="text-5xl font-black mb-2 tracking-tighter">500+</div>
+                      <div className="text-brand-100 text-[10px] font-black uppercase tracking-widest">Global Clients</div>
+                  </div>
+                  <div>
+                      <div className="text-5xl font-black mb-2 tracking-tighter">99.9%</div>
+                      <div className="text-brand-100 text-[10px] font-black uppercase tracking-widest">Server Uptime</div>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+                      <div className="text-4xl font-black mb-2 text-emerald-400 tracking-tighter">24/7</div>
+                      <div className="text-white text-[10px] font-black uppercase tracking-widest">Expert Support</div>
+                  </div>
+              </div>
           </div>
-        </div>
       </section>
 
       {/* Core Services Preview */}
-      <section className="py-24 bg-slate-50 relative">
-         <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')] opacity-40 pointer-events-none"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
-            <span className="text-indigo-600 font-bold uppercase tracking-wider text-sm">Our Expertise</span>
-            <h2 className="text-4xl font-bold text-slate-900 mt-2">Comprehensive Solutions</h2>
-            <p className="text-slate-600 mt-4 max-w-2xl mx-auto">Everything you need to scale, all in one place.</p>
+      <section className="section-container relative">
+         <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')] opacity-10 pointer-events-none"></div>
+        <div className="relative z-10">
+          <div className="text-center mb-20">
+            <span className="text-brand-600 font-bold uppercase tracking-widest text-xs">Our Expertise</span>
+            <h2 className="text-4xl md:text-5xl font-black text-slate-950 mt-4 tracking-tighter">Unified Ecosystem</h2>
+            <p className="text-slate-600 mt-6 max-w-2xl mx-auto text-lg font-light leading-relaxed">Everything you need to scale, engineered for high-throughput performance.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
             {SERVICE_CATEGORIES.slice(0, 6).map((cat) => (
-              <div key={cat.id} className="bg-white p-8 rounded-2xl border border-slate-100 hover:border-indigo-200 hover:shadow-2xl transition-all duration-300 flex flex-col group">
-                <div className="mb-6">
-                  {cat.id === 'messaging' && <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl">💬</div>}
-                  {cat.id === 'voice' && <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-2xl">🎙️</div>}
-                  {cat.id === 'digital' && <div className="w-12 h-12 bg-pink-100 text-pink-600 rounded-lg flex items-center justify-center text-2xl">📈</div>}
-                  {cat.id === 'dev' && <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center text-2xl">💻</div>}
-                  {cat.id === 'ai' && <div className="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-2xl">🤖</div>}
-                  {cat.id === 'solutions' && <div className="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center text-2xl">🚀</div>}
+              <div key={cat.id} className="glass-card p-10 flex flex-col group">
+                <div className="mb-8">
+                  {cat.id === 'messaging' && <div className="feature-icon-wrapper bg-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white">💬</div>}
+                  {cat.id === 'voice' && <div className="feature-icon-wrapper bg-purple-100 text-purple-600 group-hover:bg-purple-600 group-hover:text-white">🎙️</div>}
+                  {cat.id === 'digital' && <div className="feature-icon-wrapper bg-pink-100 text-pink-600 group-hover:bg-pink-600 group-hover:text-white">📈</div>}
+                  {cat.id === 'dev' && <div className="feature-icon-wrapper bg-orange-100 text-orange-600 group-hover:bg-orange-600 group-hover:text-white">💻</div>}
+                  {cat.id === 'ai' && <div className="feature-icon-wrapper bg-green-100 text-green-600 group-hover:bg-green-600 group-hover:text-white">🤖</div>}
+                  {cat.id === 'solutions' && <div className="feature-icon-wrapper bg-brand-100 text-brand-600 group-hover:bg-brand-600 group-hover:text-white">🚀</div>}
                 </div>
                 
-                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">{cat.title}</h3>
-                <p className="text-slate-600 text-sm mb-6 flex-grow leading-relaxed">{cat.description}</p>
+                <h3 className="text-2xl font-black text-slate-950 mb-4 group-hover:text-brand-600 transition-colors tracking-tight">{cat.title}</h3>
+                <p className="text-slate-600 text-sm mb-8 flex-grow leading-relaxed font-medium">{cat.description}</p>
                 
-                <ul className="space-y-3 mb-6 border-t border-slate-50 pt-4">
+                <ul className="space-y-4 mb-8 border-t border-slate-100 pt-6">
                   {cat.items.slice(0, 3).map((item, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-slate-500">
-                      <svg className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    <li key={idx} className="flex items-start text-xs text-slate-500 font-bold uppercase tracking-wider">
+                      <svg className="w-4 h-4 text-emerald-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
                       {item.title}
                     </li>
                   ))}
                 </ul>
-                <NavLink to="/services" className="text-indigo-600 font-bold text-sm flex items-center group-hover:underline">
-                  View All Features <svg className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                <NavLink to="/services" className="text-brand-600 font-black text-xs uppercase tracking-widest flex items-center group-hover:gap-2 transition-all">
+                  Full Capabilities <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </NavLink>
               </div>
             ))}
@@ -432,68 +438,72 @@ const Home: React.FC = () => {
       </section>
 
       {/* Home Page FAQ */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900">Common Questions</h2>
+      <section className="section-container bg-white">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-brand-600 font-bold uppercase tracking-widest text-xs">Help Center</span>
+            <h2 className="text-4xl font-black text-slate-950 mt-4 tracking-tighter">Frequently Discussed</h2>
           </div>
-          {homeFaqs.map((faq, idx) => (
-            <FaqAccordion 
-                key={idx} 
-                question={faq.question} 
-                answer={faq.answer} 
-                isOpen={openFaqIndex === idx}
-                onToggle={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
-            />
-          ))}
+          <div className="space-y-4">
+            {homeFaqs.map((faq, idx) => (
+              <FaqAccordion 
+                  key={idx} 
+                  question={faq.question} 
+                  answer={faq.answer} 
+                  isOpen={openFaqIndex === idx}
+                  onToggle={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Latest Blog Posts */}
       {recentPosts.length > 0 && (
-        <section className="py-20 bg-slate-50">
-          <div className="container mx-auto px-4">
-            <div className="flex justify-between items-end mb-10">
+        <section className="section-container bg-slate-100/30">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
               <div>
-                <span className="text-indigo-600 font-bold uppercase text-sm">Our Blog</span>
-                <h2 className="text-3xl font-bold text-slate-900 mt-2">Latest Insights</h2>
+                <span className="text-brand-600 font-bold uppercase tracking-widest text-xs">Industry Insights</span>
+                <h2 className="text-4xl font-black text-slate-950 mt-4 tracking-tighter">Latest from WebWorldMaker</h2>
               </div>
-              <NavLink to="/blog" className="text-indigo-600 font-bold hover:underline">View All</NavLink>
+              <NavLink to="/blog" className="text-brand-600 font-black uppercase text-xs tracking-widest hover:underline">View Intelligence Hub →</NavLink>
             </div>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-10">
               {recentPosts.map((post) => (
-                <div key={post.id} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all">
-                  <div className="h-48 overflow-hidden">
-                    <img src={post.imageUrl || 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80'} alt={post.title} className="w-full h-full object-cover" />
+                <div key={post.id} className="glass-card overflow-hidden group">
+                  <div className="h-56 overflow-hidden relative">
+                    <img src={post.imageUrl || 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80'} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute top-4 left-4 bg-brand-600 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-lg">{post.category}</div>
                   </div>
-                  <div className="p-6">
-                    <div className="text-xs text-indigo-500 font-bold uppercase mb-2">{post.category}</div>
-                    <h3 className="font-bold text-lg mb-2 line-clamp-2">
-                        <NavLink to={`/blog/${post.id}`} className="hover:text-indigo-600">{post.title}</NavLink>
+                  <div className="p-8">
+                    <h3 className="font-black text-xl mb-4 line-clamp-2 text-slate-950 group-hover:text-brand-600 transition-colors tracking-tight">
+                        <NavLink to={`/blog/${post.id}`}>{post.title}</NavLink>
                     </h3>
-                    <p className="text-sm text-slate-600 line-clamp-3">{post.excerpt}</p>
+                    <p className="text-sm text-slate-600 line-clamp-3 mb-6 leading-relaxed font-medium">{post.excerpt}</p>
+                    <NavLink to={`/blog/${post.id}`} className="inline-flex items-center text-xs font-black uppercase tracking-widest text-slate-400 group-hover:text-brand-600 transition-colors">
+                      Read Report <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                    </NavLink>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
         </section>
       )}
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-indigo-900 to-purple-900 text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+      <section className="py-32 bg-slate-950 text-center relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-brand-600/10 blur-[120px] rounded-full scale-150"></div>
         <div className="container mx-auto px-4 relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Ready to Transform Your Business?</h2>
-          <p className="text-indigo-100 mb-10 max-w-2xl mx-auto text-lg">
-            Join hundreds of satisfied clients who have scaled their operations with WebWorldMaker's integrated digital ecosystem.
+          <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter max-w-4xl mx-auto leading-[0.9]">Ready to engineer your digital evolution?</h2>
+          <p className="text-slate-400 mb-12 max-w-2xl mx-auto text-xl font-medium leading-relaxed">
+            Join 500+ global enterprises scaling high-throughput communication with our unified intelligence ecosystem.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <NavLink to="/contact" className="bg-emerald-600 text-white font-bold py-4 px-10 rounded-full hover:bg-emerald-700 transition-all shadow-xl hover:shadow-emerald-500/20 transform hover:-translate-y-1">
-              Contact Us Today
+            <NavLink to="/contact" className="bg-brand-600 text-white font-black py-5 px-12 rounded-2xl hover:bg-brand-500 transition-all shadow-2xl shadow-brand-600/20 transform hover:-translate-y-1 uppercase tracking-tighter text-sm">
+              Initialize Integration
             </NavLink>
-            <NavLink to="/products" className="bg-transparent border-2 border-indigo-400 text-white font-bold py-4 px-10 rounded-full hover:bg-indigo-800 transition-colors">
-              Become a Reseller
+            <NavLink to="/products" className="bg-white/5 backdrop-blur-md border border-white/10 text-white font-black py-5 px-12 rounded-2xl hover:bg-white/10 transition-all uppercase tracking-tighter text-sm">
+              Explore Product Matrix
             </NavLink>
           </div>
         </div>

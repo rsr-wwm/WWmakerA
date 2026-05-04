@@ -10,28 +10,28 @@ interface FaqAccordionProps {
 export const FaqAccordion: React.FC<FaqAccordionProps> = ({ question, answer, isOpen, onToggle }) => {
   return (
     <div 
-      className={`group border rounded-2xl overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
+      className={`group border rounded-3xl overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
         isOpen 
-          ? 'bg-white border-indigo-200 shadow-xl shadow-indigo-100/40 ring-1 ring-indigo-50 my-4' 
-          : 'bg-white border-slate-200 hover:border-indigo-300 hover:shadow-md my-3'
+          ? 'bg-white border-brand-200 shadow-2xl shadow-brand-100/50 my-6' 
+          : 'bg-white border-slate-200 hover:border-brand-300 hover:shadow-lg my-4 scale-[0.98] hover:scale-100'
       }`}
     >
       <button
         onClick={onToggle}
-        className="w-full text-left px-6 py-5 flex justify-between items-start md:items-center focus:outline-none cursor-pointer select-none bg-transparent relative z-10"
+        className="w-full text-left px-8 py-6 flex justify-between items-start md:items-center focus:outline-none cursor-pointer select-none bg-transparent relative z-10"
         aria-expanded={isOpen}
       >
-        <span className={`text-lg font-bold leading-snug transition-colors duration-300 pr-8 ${
-          isOpen ? 'text-indigo-700' : 'text-slate-800 group-hover:text-indigo-600'
+        <span className={`text-xl font-black leading-tight transition-colors duration-300 pr-10 tracking-tight ${
+          isOpen ? 'text-brand-600' : 'text-slate-900 group-hover:text-brand-600'
         }`}>
           {question}
         </span>
-        <span className={`flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
+        <span className={`flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-2xl border transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
            isOpen 
-             ? 'bg-indigo-600 border-indigo-600 text-white rotate-180 shadow-md transform scale-110' 
-             : 'bg-slate-50 border-slate-200 text-slate-400 group-hover:bg-indigo-50 group-hover:text-indigo-600 group-hover:border-indigo-200'
+             ? 'bg-brand-600 border-brand-600 text-white rotate-180 shadow-2xl shadow-brand-500/30' 
+             : 'bg-slate-50 border-slate-200 text-slate-400 group-hover:bg-brand-50 group-hover:text-brand-600 group-hover:border-brand-200'
         }`}>
-           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>
+           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" /></svg>
         </span>
       </button>
       
@@ -41,9 +41,9 @@ export const FaqAccordion: React.FC<FaqAccordionProps> = ({ question, answer, is
         }`}
       >
         <div className="overflow-hidden">
-          <div className="px-6 pb-6 pt-0">
+          <div className="px-8 pb-8 pt-0">
             <div 
-              className={`pt-4 border-t border-slate-100/80 text-slate-600 leading-relaxed text-base transition-all duration-700 ease-out transform ${
+              className={`pt-6 border-t border-slate-100 text-slate-500 font-medium leading-relaxed text-base transition-all duration-700 ease-out transform ${
                   isOpen ? 'opacity-100 translate-y-0 delay-100' : 'opacity-0 -translate-y-2'
               }`}
             >

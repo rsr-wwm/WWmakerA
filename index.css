@@ -2,6 +2,25 @@
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  /* Custom Palette */
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-200: #c7d2fe;
+  --color-brand-300: #a5b4fc;
+  --color-brand-400: #818cf8;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+  --color-brand-800: #3730a3;
+  --color-brand-900: #312e81;
+  --color-brand-950: #1e1b4b;
+
+  --color-accent-emerald: #10b981;
+  --color-accent-purple: #8b5cf6;
+  
+  --shadow-subtle: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-card: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
 }
 
 @layer base {
@@ -9,9 +28,29 @@
     @apply bg-slate-50 text-slate-900 antialiased;
     font-family: var(--font-sans);
   }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight text-slate-950;
+  }
 }
 
 @layer components {
+  .section-container {
+    @apply py-20 px-4 container mx-auto;
+  }
+  
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-slate-200/60 shadow-card rounded-2xl transition-all duration-300;
+  }
+  
+  .glass-card:hover {
+    @apply border-brand-300/50 shadow-lg -translate-y-1;
+  }
+  
+  .feature-icon-wrapper {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4 transition-transform group-hover:scale-110;
+  }
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
