@@ -124,7 +124,7 @@ const Careers: React.FC = () => {
 
         <div className="mt-16 max-w-4xl mx-auto text-center bg-slate-100 rounded-2xl p-8">
             <h3 className="font-bold text-slate-900 mb-2">Don't see a fit?</h3>
-            <p className="text-slate-600 mb-6">We are always looking for talent. Send your resume to webworldmakes@gmail.com</p>
+            <p className="text-slate-600 mb-6">We are always looking for talent. Send your resume to sales@webworldmaker.com</p>
             <SocialShare url={window.location.href} title="Careers at WebWorldMaker" className="justify-center gap-4 flex" />
         </div>
       </div>

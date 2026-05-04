@@ -11,44 +11,44 @@ import { FaqAccordion } from '../components/FaqAccordion';
 const HERO_VARIANTS = [
   {
     id: 1,
-    tag: "🚀 Architect Your Dominance",
-    titlePrefix: "Unleash Your",
-    titleHighlight: "Digital Empire",
-    description: "Complete digital infrastructure for the modern conqueror. From scalable Web Platforms to custom Software Ecosystems that drive growth.",
-    ctaText: "Start Your Project",
+    tag: "🚀 We build what you imagine",
+    titlePrefix: "Make your",
+    titleHighlight: "Business shine online",
+    description: "We don't just build sites; we craft digital spaces where people actually want to hang out. Whether you need a simple landing page or a complex store, we've got you covered.",
+    ctaText: "Let's chat",
     ctaLink: "/contact",
-    secondaryCtaText: "Explore Solutions",
+    secondaryCtaText: "Show me how",
     secondaryCtaLink: "/solutions",
     gradient: "from-indigo-400 via-purple-400 to-pink-400",
-    icon: "🏗️",
+    icon: "🏠",
     accentColor: "indigo"
   },
   {
     id: 2,
-    tag: "💬 Connect Instantly",
-    titlePrefix: "Master Global",
-    titleHighlight: "Enterprise Messaging",
-    description: "Reach your customers on their favorite channels. Tier-1 Bulk SMS, WhatsApp Business API, and RCS messaging with 99.9% delivery rates.",
-    ctaText: "Get Messaging API",
+    tag: "💬 Chat like a human",
+    titlePrefix: "Reach people",
+    titleHighlight: "In their pockets",
+    description: "Tired of emails that never get opened? Talk to your customers on WhatsApp and SMS. We help you send messages that feel like a quick text from a friend, not a robot.",
+    ctaText: "Let's get talking",
     ctaLink: "/service/bulk-sms-gateway",
-    secondaryCtaText: "View Products",
+    secondaryCtaText: "How it works",
     secondaryCtaLink: "/products",
     gradient: "from-blue-400 via-teal-400 to-emerald-400",
-    icon: "💬",
+    icon: "📱",
     accentColor: "emerald"
   },
   {
     id: 3,
-    tag: "🤖 Automate The Future",
-    titlePrefix: "Deploy Intelligent",
-    titleHighlight: "AI Agents",
-    description: "Stop trading time for money. Implement autonomous customer support bots, generative content engines, and smart business workflows.",
-    ctaText: "Try AI Tools",
+    tag: "🤖 Your digital sidekick",
+    titlePrefix: "Smart helpers",
+    titleHighlight: "For your daily tasks",
+    description: "Tech should be helpful, not a headache. Our AI tools handle the boring, repetitive stuff so you can get back to doing the work you actually enjoy.",
+    ctaText: "Try the tools",
     ctaLink: "/ai-tools",
-    secondaryCtaText: "See Case Studies",
+    secondaryCtaText: "See results",
     secondaryCtaLink: "/case-studies",
     gradient: "from-fuchsia-400 via-rose-400 to-orange-400",
-    icon: "🧠",
+    icon: "🤝",
     accentColor: "rose"
   }
 ];
@@ -90,11 +90,11 @@ const Home: React.FC = () => {
 
   // Digital Dictionary Terms with Colors
   const dictionaryTerms = [
-      { term: 'API', definition: 'Like a waiter in a restaurant. You ask the waiter (API) for what you want, they tell the kitchen (System), and bring you the result.', color: 'bg-blue-50 border-blue-100 text-blue-900', icon: '🍽️' },
-      { term: 'Cloud', definition: 'A giant network of computers that store your files safely on the internet, so you can access them from anywhere.', color: 'bg-sky-50 border-sky-100 text-sky-900', icon: '☁️' },
-      { term: 'SaaS', definition: 'Software as a Service. Instead of buying a program on a CD, you rent it over the internet (like Netflix for software).', color: 'bg-purple-50 border-purple-100 text-purple-900', icon: '💿' },
-      { term: 'Omnichannel', definition: 'Being everywhere your customer is. Chatting with them on WhatsApp, Email, and SMS seamlessly.', color: 'bg-pink-50 border-pink-100 text-pink-900', icon: '🐙' },
-      { term: 'SEO', definition: 'Search Engine Optimization. The art of making your website popular so Google puts it at the top.', color: 'bg-green-50 border-green-100 text-green-900', icon: '🔎' }
+      { term: 'API', definition: 'Think of it like a waiter at a restaurant. You tell the waiter what you want, they tell the kitchen, and then they bring the food back to you. It connects two different systems easily.', color: 'bg-blue-50 border-blue-100 text-blue-900', icon: '🍽️' },
+      { term: 'Cloud', definition: 'Instead of keeping files on just one computer, you keep them in a giant digital safe on the internet. You can open that safe from anywhere in the world.', color: 'bg-sky-50 border-sky-100 text-sky-900', icon: '☁️' },
+      { term: 'SaaS', definition: 'Software as a Service. It means you use a program over the internet instead of installing it from a disk. It’s like Netflix, but for work tools.', color: 'bg-purple-50 border-purple-100 text-purple-900', icon: '💿' },
+      { term: 'Omnichannel', definition: 'Being everywhere your customers are. Whether they want to talk on WhatsApp, Email, or SMS, you’re right there waiting for them.', color: 'bg-pink-50 border-pink-100 text-pink-900', icon: '🐙' },
+      { term: 'SEO', definition: 'Search Engine Optimization. The secret sauce to making sure your website shows up first when someone searches for what you do on Google.', color: 'bg-green-50 border-green-100 text-green-900', icon: '🔎' }
   ];
 
   // Schema for Organization
@@ -107,7 +107,7 @@ const Home: React.FC = () => {
     "description": "Provider of enterprise digital solutions, bulk messaging, and custom software development.",
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+1-555-123-4567",
+      "telephone": "+91-86002-80002",
       "contactType": "sales",
       "areaServed": "Global"
     },

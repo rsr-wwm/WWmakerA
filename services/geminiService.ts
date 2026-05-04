@@ -101,7 +101,8 @@ export const analyzeSeoKeywords = async (topic: string): Promise<{ keywords: str
             }
           }
         },
-        tools: [{ googleSearch: {} }] // Grounding for latest trends
+        // Grounding removed to prevent authorization prompts as requested
+        // tools: [{ googleSearch: {} }] 
       }
     });
     
@@ -179,10 +180,11 @@ export const askMaps = async (query: string): Promise<{ text: string; chunks: an
         const response = await ai.models.generateContent({
             model: GeminiModel.FLASH_2_5,
             contents: query,
-            config: {
-                tools: [{ googleMaps: {} }],
-                // Note: Cannot use JSON schema with Maps tool
-            }
+            // Grounding removed to prevent authorization prompts as requested
+            // config: {
+            //     tools: [{ googleMaps: {} }],
+            //     // Note: Cannot use JSON schema with Maps tool
+            // }
         });
         return {
             text: response.text || "No result found.",
